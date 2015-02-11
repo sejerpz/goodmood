@@ -15,16 +15,17 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\stable\</PublishUrl>
+    <PublishUrl>..\deploy\stable\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateInterval>2</UpdateInterval>
+    <UpdateIntervalUnits>Weeks</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>https://github.com/sejerpz/GoodMood/public/stable/</UpdateUrl>
     <ProductName>GoodMood</ProductName>
     <PublisherName>Andrea Del Signore</PublisherName>
     <SuiteName>T4C</SuiteName>
