@@ -25,8 +25,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://github.com/sejerpz/GoodMood/deploy/stable/</InstallUrl>
-    <UpdateUrl>https://github.com/sejerpz/GoodMood/deploy/stable/</UpdateUrl>
+    <InstallUrl>https://github.com/sejerpz/GoodMood/raw/master/deploy/stable/</InstallUrl>
+    <UpdateUrl>https://github.com/sejerpz/GoodMood/raw/master/deploy/stable/</UpdateUrl>
     <ProductName>GoodMood</ProductName>
     <PublisherName>Andrea Del Signore</PublisherName>
     <SuiteName>T4C</SuiteName>
