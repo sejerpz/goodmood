@@ -1,70 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <title>Goodmood by sejerpz</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Goodmood</h1>
-        <h2>National Geographics Photo Of The Day Desktop background for Windows</h2>
-        <a href="https://github.com/sejerpz/GoodMood" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/sejerpz/GoodMood">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/sejerpz/GoodMood/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/sejerpz/GoodMood/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Goodmood</h1>
+          <p>National Geographics Photo Of The Day Desktop background for Windows</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/sejerpz">sejerpz</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h3>
 <a id="welcome-to-goodmood" class="anchor" href="#welcome-to-goodmood" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GoodMood.</h3>
 
-<p>Goodmood change you desktop background with the "Photo of the day" picture taken from the [National Geographics WebSite]</p>
+<p>Goodmood change you desktop background with the "Photo of the day" picture taken from the <a href="http://photography.nationalgeographic.com/photography/photo-of-the-day/">National Geographics WebSite</a></p>
 
-<p>Its focus is beaty and simplicity</p>
+<p>Its focus is beaty and simplicity. Goodmood can be started automatically on windows startup and it seats quietly on the tray area. It even supports suspend and resume!</p>
 
 <p><img src="screenshots/goodmood.png" alt="Goodmood Application"></p>
 
 <h3>
+<a id="help--configuration" class="anchor" href="#help--configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help &amp; Configuration</h3>
+
+<p>You can access all the relevant options from the (screenshots/Edit14.png) icon on the upper left edge of the main window.
+A simple menù is shown with the following items:</p>
+
+<table>
+<thead>
+<tr>
+<th>menù item</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Refresh</td>
+<td>Get the new "Photo of the day" from the National Geographics Site</td>
+</tr>
+<tr>
+<td>Set ad desktop background</td>
+<td>Set the current picture as the window desktop background</td>
+</tr>
+<tr>
+<td>Settings -&gt; Automatically check for new pictures</td>
+<td>Check this item if you want Goodmood check the National Geographics site periodically</td>
+</tr>
+<tr>
+<td>Settings -&gt; Automatically set picture as desktop background</td>
+<td>Check this item if you want Goodmood set the picture as windows desktop background after download</td>
+</tr>
+<tr>
+<td>Settings -&gt; Run on windows startup</td>
+<td>Check this item if you want Goodmood start with Windows</td>
+</tr>
+<tr>
+<td>About...</td>
+<td>Open an about window with version and copyright information</td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>Close Goodmood</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Main author Andrea Del Signore (<a href="https://github.com/sejerpz" class="user-mention">@sejerpz</a>)</p>
+<p>Main author is Andrea Del Signore (<a href="https://github.com/sejerpz" class="user-mention">@sejerpz</a>)</p>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>To report a problem or a feature request <a href="https://github.com/sejerpz/GoodMood/issues">click here</a></p>
-        </section>
+      </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/sejerpz/GoodMood/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/sejerpz/GoodMood/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/sejerpz/GoodMood"></a> is maintained by <a href="https://github.com/sejerpz">sejerpz</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
     </div>
-
-  
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
