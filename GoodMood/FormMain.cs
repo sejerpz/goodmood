@@ -155,7 +155,7 @@ namespace GoodMood
 
             if (newValue)
             {
-                if (rk.GetValue(Application.ProductName) != keyValue)
+                if ((string)rk.GetValue(Application.ProductName) != keyValue)
                 {
                     rk.SetValue(Application.ProductName, keyValue);
                 }
