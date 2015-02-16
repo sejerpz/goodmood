@@ -12,35 +12,48 @@ namespace GoodMood
 {
     abstract class PictureUri
     {
-        private string uri = null;
-        private string description = null;
+        private string photoAddress = null;
+        private string photoDescription = null;
 
         public PictureUri()
         {
         }
 
-        public virtual string Uri
+        public virtual string PhotoAddress
         {
             get
             {
-                return uri;
+                return photoAddress;
             }
             protected set
             {
-                this.uri = value;
+                this.photoAddress = value;
             }
         }
 
-        public virtual string Description
+        public virtual string WebSiteAddress
         {
             get
             {
-                return description;
+                return this.PhotoAddress;
+            }
+        }
+
+        public virtual string PhotoDescription
+        {
+            get
+            {
+                return photoDescription;
             }
             protected set
             {
-                this.description = value;
+                this.photoDescription = value;
             }
+        }
+
+        public abstract string ProviderDescription
+        {
+            get;
         }
 
         public abstract Task Update();

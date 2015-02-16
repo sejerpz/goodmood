@@ -118,7 +118,7 @@ namespace GoodMood
             try
             {
                 await this.pictureUri.Update();
-                if (!string.IsNullOrEmpty(this.pictureUri.Uri))
+                if (!string.IsNullOrEmpty(this.pictureUri.PhotoAddress))
                 {
                     newImage = await DownloadImage(this.pictureUri);
                 }
@@ -149,12 +149,12 @@ namespace GoodMood
                 Image newImage = null;
 
                 // check cached uri
-                if (string.IsNullOrEmpty(lastDowloadedUri) || pictureUri.Uri != lastDowloadedUri)
+                if (string.IsNullOrEmpty(lastDowloadedUri) || pictureUri.PhotoAddress != lastDowloadedUri)
                 {
                     var dowloader = new PictureDowloader();
 
                     await dowloader.Download(pictureUri);
-                    lastDowloadedUri = pictureUri.Uri;
+                    lastDowloadedUri = pictureUri.PhotoAddress;
                     newImage = dowloader.Image;
                 }
                 else

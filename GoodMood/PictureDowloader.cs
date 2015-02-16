@@ -22,7 +22,7 @@ namespace GoodMood
             try
             {
                 var client = new WebClient();
-                var data = await client.DownloadDataTaskAsync(new Uri(picture.Uri));
+                var data = await client.DownloadDataTaskAsync(new Uri(picture.PhotoAddress));
 
                 using (var storage = new MemoryStream(data))
                 {

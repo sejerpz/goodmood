@@ -223,6 +223,7 @@
             this.pictureBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxPreview.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBoxPreview.Location = new System.Drawing.Point(23, 65);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
@@ -230,6 +231,7 @@
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 0;
             this.pictureBoxPreview.TabStop = false;
+            this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
             // 
             // contextMenuStripDonate
@@ -237,7 +239,7 @@
             this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemDonatePayPal});
             this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 48);
+            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
             // 
             // toolStripMenuItemDonatePayPal
             // 

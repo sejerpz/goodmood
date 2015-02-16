@@ -93,7 +93,9 @@ namespace GoodMood
                 metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = false;
                 pictureBoxPreview.Enabled = true;
                 pictureBoxPreview.Image = pictureManager.Image;
-                metroLabelTitle.Text = pictureManager.Uri.Description ?? "";
+                metroToolTips.SetToolTip(pictureBoxPreview, string.Format("Go To {0} site...", pictureManager.Uri.ProviderDescription));
+                pictureBoxPreview.Cursor = Cursors.Hand;
+                metroLabelTitle.Text = pictureManager.Uri.PhotoDescription ?? "";
                 pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = true;
                 string toolTip = metroLabelTitle.Text;
                 if (toolTip.Length > 63)
@@ -362,6 +364,11 @@ namespace GoodMood
             {
                 MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
             }
+        }
+
+        private void pictureBoxPreview_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(pictureManager.Uri.WebSiteAddress);
         }
     }
 }

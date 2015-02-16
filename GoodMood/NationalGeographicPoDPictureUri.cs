@@ -17,6 +17,19 @@ namespace GoodMood
     {
         private const string webUri = @"http://photography.nationalgeographic.com/photography/photo-of-the-day/";
 
+        public override string WebSiteAddress
+        {
+            get
+            {
+                return webUri;
+            }
+        }
+
+        public override string ProviderDescription
+        {
+            get { return "National Geographic"; }
+        }
+
         public override async Task Update()
         {
             var siteUri = new Uri(webUri);
@@ -45,10 +58,10 @@ namespace GoodMood
                         if (img.HasAttributes)
                         {
                             var newUri = new Uri(siteUri, img.Attributes["src"].Value);
-                            this.Uri = newUri.AbsoluteUri;
+                            this.PhotoAddress = newUri.AbsoluteUri;
                             if (img.Attributes["alt"] != null)
                             {
-                                this.Description = img.Attributes["alt"].Value;
+                                this.PhotoDescription = img.Attributes["alt"].Value;
                             }
                         }
                         break;
