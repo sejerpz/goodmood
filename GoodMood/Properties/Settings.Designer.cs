@@ -46,5 +46,17 @@ namespace GoodMood.Properties {
                 this["SetBackground"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LaunchAtStartup {
+            get {
+                return ((bool)(this["LaunchAtStartup"]));
+            }
+            set {
+                this["LaunchAtStartup"] = value;
+            }
+        }
     }
 }

@@ -20,18 +20,26 @@ namespace GoodMood
     {
         private PictureManager pictureManager;
         private bool closeByMenu = false;
+        private CommandlineOptions startupOptions;
 
-        public FormMain()
+        private FormMain()
         {
             InitializeComponent();
+            
+        }
 
+        public FormMain(CommandlineOptions startupOptions)
+            : this()
+        {
             try
             {
                 this.notifyIcon.Text = this.Text;
-
+                this.startupOptions = startupOptions;
                 ReadSettings();
+                
+                SynchronizeLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
             }
@@ -48,6 +56,20 @@ namespace GoodMood
                 metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = false;
                 metroLabelTitle.Text = "select 'refresh' menu' item to update the picture";
             }
+
+            Application.Idle += Application_Idle;
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            Application.Idle -= Application_Idle;
+            ProcessCommandlineOptions();
+        }
+
+        private void ProcessCommandlineOptions()
+        {
+            if (startupOptions.Quiet)
+                this.HideToTrayArea();
         }
 
         private async void UpdatePicture()
@@ -105,7 +127,7 @@ namespace GoodMood
             {
                 toolStripMenuItemSettingCheckPictureUpdates.Checked = Properties.Settings.Default.CheckPictureUpdate;
                 toolStripMenuItemSettingSetBackground.Checked = Properties.Settings.Default.SetBackground;
-                toolStripMenuItemLauchAtStartup.Checked = GetLanchAtStartup();
+                toolStripMenuItemLauchAtStartup.Checked = Properties.Settings.Default.LaunchAtStartup;
             }
             catch (Exception ex)
             {
@@ -125,24 +147,23 @@ namespace GoodMood
             }
         }
 
-        private void SetLaunchAtStartup(bool newValue)
+        private void SynchronizeLaunchAtStartup(bool newValue)
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            string keyValue = Application.ExecutablePath.ToString() + "/quiet";
 
             if (newValue)
-                rk.SetValue(Application.ProductName, Application.ExecutablePath.ToString());
+            {
+                if (rk.GetValue(Application.ProductName) != keyValue)
+                {
+                    rk.SetValue(Application.ProductName, keyValue);
+                }
+            }
             else
+            {
                 rk.DeleteValue(Application.ProductName, false);
-        }
-
-        private bool GetLanchAtStartup()
-        {
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey
-                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
-            var executable = (string)rk.GetValue(Application.ProductName, "");
-            return string.Compare(executable ?? "", Application.ExecutablePath, true) == 0;
+            }
         }
 
         #region Intercept Suspend & Resume Power Events
@@ -246,9 +267,14 @@ namespace GoodMood
             if (e.CloseReason == CloseReason.UserClosing && !closeByMenu)
             {
                 e.Cancel = true;
-                this.Visible = false;
-                notifyIcon.ShowBalloonTip(1000, this.Text, "Hey, click here if you need me again ;)", ToolTipIcon.Info);
+                HideToTrayArea();
             }
+        }
+
+        private void HideToTrayArea()
+        {
+            this.Visible = false;
+            notifyIcon.ShowBalloonTip(1000, this.Text, "Hey, click here if you need me again ;)", ToolTipIcon.Info);
         }
 
         private void toolStripMenuItemSettingCheckPictureUpdates_CheckedChanged(object sender, EventArgs e)
@@ -279,10 +305,13 @@ namespace GoodMood
         {
             try
             {
-                if (GetLanchAtStartup() != toolStripMenuItemLauchAtStartup.Checked)
+                if (Properties.Settings.Default.LaunchAtStartup != toolStripMenuItemLauchAtStartup.Checked)
                 {
-                    SetLaunchAtStartup(toolStripMenuItemLauchAtStartup.Checked);
+                    Properties.Settings.Default.LaunchAtStartup = toolStripMenuItemLauchAtStartup.Checked;
+                    Properties.Settings.Default.Save();
+                    SynchronizeLaunchAtStartup(toolStripMenuItemLauchAtStartup.Checked);
                 }
+                
             }
             catch (Exception ex)
             {

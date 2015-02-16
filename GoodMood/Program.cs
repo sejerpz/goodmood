@@ -16,11 +16,15 @@ namespace GoodMood
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            var startupOptions = new CommandlineOptions();
+            var options = new OptionSet()
+                .Add("quiet", quiet => { startupOptions.Quiet = true; });
+            options.Parse(args);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new FormMain(startupOptions));
         }
     }
 }
