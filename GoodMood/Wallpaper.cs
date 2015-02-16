@@ -34,11 +34,12 @@ namespace GoodMood
 
         public static void Set(Image wallpaper, Style style)
         {
-            string tempPath = Path.Combine(Path.GetTempPath(), "wallpaper.bmp");
+            string tempWallPaperPath = Path.Combine(Path.GetTempPath(), Path.GetTempFileName());
+            string newWallPaperPath = Path.Combine(Path.GetTempPath(), "goodmood_wallpaper.bmp");
 
             using (var bmp = new Bitmap(wallpaper))
             {
-                bmp.Save(tempPath, System.Drawing.Imaging.ImageFormat.Bmp);
+                bmp.Save(tempWallPaperPath, System.Drawing.Imaging.ImageFormat.Bmp);
             }
 
             if (style != Style.None)
@@ -62,9 +63,18 @@ namespace GoodMood
                 }
             }
 
+            try
+            {
+                File.Copy(tempWallPaperPath, newWallPaperPath, true);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Cannot move new downloaded photo to 'wallpaper.bmp' file", ex);
+            }
+
             SystemParametersInfo(SPI_SETDESKWALLPAPER,
                 0,
-                tempPath,
+                newWallPaperPath,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
         }
     }
