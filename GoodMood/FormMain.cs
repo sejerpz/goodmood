@@ -33,7 +33,6 @@ namespace GoodMood
         {
             try
             {
-                this.notifyIcon.Text = this.Text;
                 this.startupOptions = startupOptions;
                 ReadSettings();
                 
@@ -80,7 +79,7 @@ namespace GoodMood
         private void OnPictureUpdateBegin(PictureManager pictureManager)
         {
             pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = false;
-            notifyIcon.Text = metroLabelTitle.Text = "updating national geographic picture of the day...";
+            metroLabelTitle.Text = string.Format("updating {0} photo of the day...", pictureManager.Uri.ProviderDescription);
             metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = true;
             pictureBoxPreview.Enabled = false;
         }
@@ -97,18 +96,11 @@ namespace GoodMood
                 pictureBoxPreview.Cursor = Cursors.Hand;
                 metroLabelTitle.Text = pictureManager.Uri.PhotoDescription ?? "";
                 pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = true;
-                string toolTip = metroLabelTitle.Text;
-                if (toolTip.Length > 63)
+                if (customTooltip != null && !customTooltip.IsDisposed)
                 {
-                    if (toolTip.StartsWith("Picture of ", StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        toolTip = "..." + toolTip.Substring("Picture of ".Length);
-                    }
-                    if (toolTip.Length > 63)
-                        toolTip = toolTip.Substring(0, 60) + "...";
+                    customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
                 }
-
-                notifyIcon.Text = toolTip;
+            
                 if (pictureManager.Image != null)
                 {
                     if (Properties.Settings.Default.SetBackground)
@@ -313,7 +305,6 @@ namespace GoodMood
                     Properties.Settings.Default.Save();
                     SynchronizeLaunchAtStartup(toolStripMenuItemLauchAtStartup.Checked);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -369,6 +360,27 @@ namespace GoodMood
         private void pictureBoxPreview_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(pictureManager.Uri.WebSiteAddress);
+        }
+
+        private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+            ShowCustomTooltip(e);
+        }
+
+        private FormTrayTooltip customTooltip = null;
+
+        private void ShowCustomTooltip(MouseEventArgs e)
+        {
+            if (customTooltip == null || customTooltip.IsDisposed)
+            {
+                customTooltip = new FormTrayTooltip();
+                var screen = Screen.FromPoint(e.Location);
+                customTooltip.Location = new Point(screen.WorkingArea.Width - customTooltip.Width - 2, screen.WorkingArea.Height - customTooltip.Height - 2);
+                customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
+                customTooltip.Show();
+            }
+            // still receiving move events
+            customTooltip.StayVisible();
         }
     }
 }

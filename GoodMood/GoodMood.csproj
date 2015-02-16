@@ -109,6 +109,12 @@
     <Compile Include="FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTrayTooltip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTrayTooltip.Designer.cs">
+      <DependentUpon>FormTrayTooltip.cs</DependentUpon>
+    </Compile>
     <Compile Include="NationalGeographicPoDPictureUri.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTrayTooltip.resx">
+      <DependentUpon>FormTrayTooltip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
