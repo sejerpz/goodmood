@@ -102,7 +102,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                Interaction.CriticalError(ex);
+                Interaction.Error(ex, false);
             }
             finally
             {

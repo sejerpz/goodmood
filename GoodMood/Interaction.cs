@@ -9,30 +9,47 @@ namespace GoodMood
 {
     class Interaction
     {
-        public static void Error(Exception ex)
+        public static void Error(Exception ex, bool showSendLink = true)
         {
-            using (var form = new FormError(ex))
+            using (var form = new FormError(ex, showSendLink))
             {
                 form.ShowDialog();
             }
         }
 
-        public static void CriticalError(Exception ex)
+        public static void Info(string message, string okButtonText = null)
         {
-            using (var form = new FormError(ex, false))
+            using(var form = CreateDialog(FormDialog.DialogStyle.Info, message, okButtonText))
             {
                 form.ShowDialog();
             }
         }
 
-        public static void Info(string message)
+        //public static DialogResult Query(string message, string okButtonText = null)
+        //{
+        //    using (var form = CreateDialog(FormDialog.DialogStyle.Query, message, okButtonText))
+        //    {
+        //        return form.ShowDialog();
+        //    }
+        //}
+
+        public static void Warning(string message, string okButtonText = null)
         {
-            MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = CreateDialog(FormDialog.DialogStyle.Warning, message, okButtonText))
+            {
+                form.ShowDialog();
+            }
         }
 
-        public static void Warning(string message)
+        private static FormDialog CreateDialog(FormDialog.DialogStyle dialogStyle, string message, string okButtonText)
         {
-            MessageBox.Show(message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            FormDialog form;
+            if (okButtonText == null)
+                form = new FormDialog(dialogStyle, message);
+            else
+                form = new FormDialog(dialogStyle, message, okButtonText);
+
+            return form;
         }
     }
 }
