@@ -103,6 +103,16 @@ namespace GoodMood.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Oops96 {
+            get {
+                object obj = ResourceManager.GetObject("Oops96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paypal16 {
             get {
                 object obj = ResourceManager.GetObject("Paypal16", resourceCulture);

@@ -58,5 +58,14 @@ namespace GoodMood.Properties {
                 this["LaunchAtStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://colori.no-ip.org/briser/api/v1/goodmood/crash-report")]
+        public string CrashReportURL {
+            get {
+                return ((string)(this["CrashReportURL"]));
+            }
+        }
     }
 }

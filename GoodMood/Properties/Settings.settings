@@ -11,5 +11,8 @@
     <Setting Name="LaunchAtStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CrashReportURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://colori.no-ip.org/briser/api/v1/goodmood/crash-report</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

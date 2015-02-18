@@ -22,6 +22,7 @@ namespace GoodMood
 
         public event EventHandler PictureUpdateBegin;
         public event EventHandler PictureUpdateEnd;
+        public event EventHandler<ThreadExceptionEventArgs> PictureUpdateError;
 
         public PictureUri Uri
         {
@@ -69,7 +70,7 @@ namespace GoodMood
             {
                 var now = DateTime.Now;
                 var nextTick = now.Date.AddDays(1).Date.Subtract(now);
-                nextCheckInterval = 10000 + (int) (nextTick.TotalSeconds) * 1000; // 10 sec. after midnight
+                nextCheckInterval = 10000 + (int)(nextTick.TotalSeconds) * 1000; // 10 sec. after midnight
             }
             timer.Change(nextCheckInterval, Timeout.Infinite);
         }
@@ -84,6 +85,12 @@ namespace GoodMood
         {
  	        if (PictureUpdateEnd != null)
                 PictureUpdateEnd(this, e);
+        }
+
+        protected virtual void OnPictureUpdateError(ThreadExceptionEventArgs e)
+        {
+            if (PictureUpdateError != null)
+                PictureUpdateError(this, e);
         }
 
         public void Start()
@@ -131,9 +138,10 @@ namespace GoodMood
                 this.Image = newImage;
                 return updated;
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                OnPictureUpdateError(new ThreadExceptionEventArgs(ex));
+                return false;
             }
             finally
             {

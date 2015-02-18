@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using Microsoft.Win32;
+using System.Threading;
 
 namespace GoodMood
 {
@@ -40,12 +41,14 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
 
             this.pictureManager = new PictureManager(new NationalGeographicPoDPictureUri());
             this.pictureManager.PictureUpdateBegin += pictureManager_PictureUpdateBegin;
             this.pictureManager.PictureUpdateEnd += pictureInfo_PictureUpdateEnd;
+            this.pictureManager.PictureUpdateError += pictureManager_PictureUpdateError;
+
             if (Properties.Settings.Default.CheckPictureUpdate)
             {
                 this.pictureManager.Start();
@@ -58,6 +61,15 @@ namespace GoodMood
 
             Application.Idle += Application_Idle;
         }
+
+        void pictureManager_PictureUpdateError(object sender, ThreadExceptionEventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                Interaction.Error(e.Exception);
+            }));
+        }
+
 
         void Application_Idle(object sender, EventArgs e)
         {
@@ -111,7 +123,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
         }
 
@@ -125,7 +137,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
         }
 
@@ -137,7 +149,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
         }
 
@@ -308,7 +320,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
         }
 
@@ -353,7 +365,7 @@ namespace GoodMood
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Error ({0}): {1}", ex.GetType().Name, ex.Message));
+                Interaction.Error(ex);
             }
         }
 

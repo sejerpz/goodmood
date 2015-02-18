@@ -24,7 +24,13 @@ namespace GoodMood
             options.Parse(args);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += Application_ThreadException;
             Application.Run(new FormMain(startupOptions));
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Interaction.Error(e.Exception);
         }
     }
 }
