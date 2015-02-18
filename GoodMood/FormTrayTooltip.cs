@@ -29,8 +29,17 @@ namespace GoodMood
                     }
                     else
                     {
-                        counter--;
-                        this.Opacity = Math.Min(1.0, 0.5 + counter * 0.15);
+                        var rec = new Rectangle(new Point(0, 0), this.Size);
+
+                        if (rec.Contains(this.PointToClient(Control.MousePosition)))
+                        {
+                            StayVisible();
+                        }
+                        else
+                        {
+                            counter--;
+                            this.Opacity = Math.Min(1.0, 0.5 + counter * 0.15);
+                        }
                         timer.Change(1000, Timeout.Infinite);
                     }
                 }));
