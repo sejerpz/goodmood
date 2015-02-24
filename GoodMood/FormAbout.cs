@@ -56,14 +56,17 @@ namespace GoodMood
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
-
+               
                 try
                 {
-                    info = ad.CheckForDetailedUpdate();
+                    using (var wait = new WaitCursor())
+                    {
+                        info = ad.CheckForDetailedUpdate();
+                    }
                 }
                 catch (DeploymentDownloadException dde)
                 {
-                    Interaction.Warning ("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
+                    Interaction.Warning("The new version of the application cannot be downloaded at this time. \n\nPlease check your network connection, or try again later. Error: " + dde.Message);
                     return;
                 }
                 catch (InvalidDeploymentException ide)
@@ -76,6 +79,7 @@ namespace GoodMood
                     Interaction.Info("This application cannot be updated. It is likely not a ClickOnce application. Error: " + ioe.Message);
                     return;
                 }
+                
 
                 if (info.UpdateAvailable)
                 {
@@ -102,7 +106,10 @@ namespace GoodMood
                     {
                         try
                         {
-                            ad.Update();
+                            using (var wait = new WaitCursor())
+                            {
+                                ad.Update();
+                            }
                             Interaction.Info("The application has been upgraded, and will now restart.");
                             Application.Restart();
                         }
@@ -111,6 +118,10 @@ namespace GoodMood
                             Interaction.Error(ex);
                         }
                     }
+                }
+                else
+                {
+                    Interaction.Info("You are running the latest version :)");
                 }
             }
         }
