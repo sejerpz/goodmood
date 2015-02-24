@@ -22,6 +22,9 @@ namespace GoodMood
         private PictureManager pictureManager;
         private bool closeByMenu = false;
         private CommandlineOptions startupOptions;
+        private FormTrayTooltip customTooltip = null;
+        private System.Windows.Forms.Timer toolTipTimer;
+        private Rectangle trayIconSinsitiveArea = Rectangle.Empty;
 
         private FormMain()
         {
@@ -60,6 +63,10 @@ namespace GoodMood
             }
 
             Application.Idle += Application_Idle;
+
+            this.toolTipTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolTipTimer.Interval = 1250;
+            this.toolTipTimer.Tick += toolTipTimer_Tick;
         }
 
         void pictureManager_PictureUpdateError(object sender, ThreadExceptionEventArgs e)
@@ -69,7 +76,6 @@ namespace GoodMood
                 Interaction.Error(e.Exception);
             }));
         }
-
 
         void Application_Idle(object sender, EventArgs e)
         {
@@ -379,20 +385,37 @@ namespace GoodMood
             ShowCustomTooltip(e);
         }
 
-        private FormTrayTooltip customTooltip = null;
-
         private void ShowCustomTooltip(MouseEventArgs e)
         {
             if (customTooltip == null || customTooltip.IsDisposed)
             {
+                if (!this.toolTipTimer.Enabled)
+                {
+                    this.toolTipTimer.Start();
+                    trayIconSinsitiveArea = new Rectangle(Control.MousePosition, new Size(16, 16));
+                    trayIconSinsitiveArea.Inflate(12, 12);
+                }
+            }
+            else
+            {
+                // still receiving move events
+                customTooltip.StayVisible();
+            }
+        }
+
+        private void toolTipTimer_Tick(object sender, EventArgs e)
+        {
+            toolTipTimer.Stop();
+            var mouse = Control.MousePosition;
+            if (trayIconSinsitiveArea.Contains(mouse))
+            {
                 customTooltip = new FormTrayTooltip();
-                var screen = Screen.FromPoint(e.Location);
+                var screen = Screen.PrimaryScreen;
                 customTooltip.Location = new Point(screen.WorkingArea.Width - customTooltip.Width - 2, screen.WorkingArea.Height - customTooltip.Height - 2);
                 customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
                 customTooltip.Show();
+                customTooltip.StayVisible();
             }
-            // still receiving move events
-            customTooltip.StayVisible();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace GoodMood
         public FormTrayTooltip()
         {
             InitializeComponent();
+            this.HandleCreated += FormTrayTooltip_HandleCreated;
             timer = new System.Threading.Timer(new System.Threading.TimerCallback((state) =>
             {
                 this.Invoke(new Action(() => {
@@ -40,13 +41,18 @@ namespace GoodMood
                             counter--;
                             this.Opacity = Math.Min(1.0, 0.5 + counter * 0.15);
                         }
-                        timer.Change(1000, Timeout.Infinite);
+                        timer.Change(750, Timeout.Infinite);
                     }
                 }));
             }));
-            timer.Change(2000, Timeout.Infinite);
         }
 
+        void FormTrayTooltip_HandleCreated(object sender, EventArgs e)
+        {
+            timer.Change(1000, Timeout.Infinite);
+        }
+
+        
         public void StayVisible()
         {
             counter = 2;
