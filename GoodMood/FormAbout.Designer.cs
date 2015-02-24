@@ -34,6 +34,7 @@
             this.metroLinkWebSite = new MetroFramework.Controls.MetroLink();
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.metroLinkCheckUpdates = new MetroFramework.Controls.MetroLink();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +70,22 @@
             // 
             this.metroStyleManager.Owner = null;
             // 
+            // metroLinkCheckUpdates
+            // 
+            this.metroLinkCheckUpdates.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.metroLinkCheckUpdates.Location = new System.Drawing.Point(175, 62);
+            this.metroLinkCheckUpdates.Name = "metroLinkCheckUpdates";
+            this.metroLinkCheckUpdates.Size = new System.Drawing.Size(151, 23);
+            this.metroLinkCheckUpdates.TabIndex = 3;
+            this.metroLinkCheckUpdates.Text = "check for updates...";
+            this.metroLinkCheckUpdates.Click += new System.EventHandler(this.metroLinkCheckUpdates_Click);
+            // 
             // FormAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 179);
+            this.Controls.Add(this.metroLinkCheckUpdates);
             this.Controls.Add(this.metroLinkWebSite);
             this.Controls.Add(this.metroLabelCopyRight);
             this.Controls.Add(this.metroLabelVersion);
@@ -99,5 +111,6 @@
         private MetroFramework.Controls.MetroLink metroLinkWebSite;
         private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
         private MetroFramework.Components.MetroStyleManager metroStyleManager;
+        private MetroFramework.Controls.MetroLink metroLinkCheckUpdates;
     }
 }
