@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.metroLabelInfo = new MetroFramework.Controls.MetroLabel();
-            this.metroButtonOk = new MetroFramework.Controls.MetroButton();
+            this.flowLayoutPanelButtonArea = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // metroLabelInfo
@@ -43,27 +43,25 @@
             this.metroLabelInfo.Text = "metroLabelInfo";
             this.metroLabelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // metroButtonOk
+            // flowLayoutPanelButtonArea
             // 
-            this.metroButtonOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButtonOk.AutoSize = true;
-            this.metroButtonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.metroButtonOk.Location = new System.Drawing.Point(157, 79);
-            this.metroButtonOk.Name = "metroButtonOk";
-            this.metroButtonOk.Size = new System.Drawing.Size(89, 24);
-            this.metroButtonOk.TabIndex = 7;
-            this.metroButtonOk.Text = "&Ok";
+            this.flowLayoutPanelButtonArea.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.flowLayoutPanelButtonArea.AutoSize = true;
+            this.flowLayoutPanelButtonArea.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanelButtonArea.Location = new System.Drawing.Point(152, 109);
+            this.flowLayoutPanelButtonArea.Name = "flowLayoutPanelButtonArea";
+            this.flowLayoutPanelButtonArea.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanelButtonArea.TabIndex = 8;
+            this.flowLayoutPanelButtonArea.Resize += new System.EventHandler(this.flowLayoutPanelButtonArea_Resize);
             // 
             // FormDialog
             // 
-            this.AcceptButton = this.metroButtonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(400, 114);
             this.ControlBox = false;
-            this.Controls.Add(this.metroButtonOk);
+            this.Controls.Add(this.flowLayoutPanelButtonArea);
             this.Controls.Add(this.metroLabelInfo);
             this.MinimumSize = new System.Drawing.Size(400, 114);
             this.Name = "FormDialog";
@@ -79,7 +77,7 @@
         #endregion
 
         private MetroFramework.Controls.MetroLabel metroLabelInfo;
-        private MetroFramework.Controls.MetroButton metroButtonOk;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelButtonArea;
 
     }
 }

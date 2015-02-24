@@ -11,45 +11,64 @@ namespace GoodMood
     {
         public static void Error(Exception ex, bool showSendLink = true)
         {
+            if (ex == null) throw new ArgumentNullException ("ex argument required");
+
             using (var form = new FormError(ex, showSendLink))
             {
                 form.ShowDialog();
             }
         }
 
-        public static void Info(string message, string okButtonText = null)
+        public static void Info(string message, string okButtonText = "&Ok")
         {
-            using(var form = CreateDialog(FormDialog.DialogStyle.Info, message, okButtonText))
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
+
+            using(var form = CreateDialog(FormDialog.MessageStyle.Info, message, okButtonText))
             {
                 form.ShowDialog();
             }
         }
 
-        //public static DialogResult Query(string message, string okButtonText = null)
-        //{
-        //    using (var form = CreateDialog(FormDialog.DialogStyle.Query, message, okButtonText))
-        //    {
-        //        return form.ShowDialog();
-        //    }
-        //}
-
-        public static void Warning(string message, string okButtonText = null)
+        public static FormDialog.MessageResult Query(string message, string yesButtonText, string noButtonText, string cancelButtonText = null)
         {
-            using (var form = CreateDialog(FormDialog.DialogStyle.Warning, message, okButtonText))
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
+            if (string.IsNullOrEmpty(yesButtonText)) throw new ArgumentException("yesButtonText argument required");
+            if (string.IsNullOrEmpty(noButtonText)) throw new ArgumentException("noButtonText argument required");
+
+            using (var form = CreateDialog(FormDialog.MessageStyle.Query, message, yesButtonText, noButtonText, cancelButtonText))
+            {
+                return form.ShowDialog();
+            }
+        }
+
+        public static void Warning(string message, string okButtonText = "&Ok")
+        {
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
+
+            using (var form = CreateDialog(FormDialog.MessageStyle.Warning, message, okButtonText))
             {
                 form.ShowDialog();
             }
         }
 
-        private static FormDialog CreateDialog(FormDialog.DialogStyle dialogStyle, string message, string okButtonText)
+        private static FormDialog CreateDialog(FormDialog.MessageStyle dialogStyle, string message, string yesButtonText, string noButtonText = null, string cancelButtonText = null)
         {
-            FormDialog form;
-            if (okButtonText == null)
-                form = new FormDialog(dialogStyle, message);
-            else
-                form = new FormDialog(dialogStyle, message, okButtonText);
+            List<DialogButton> buttons = new List<DialogButton>();
 
-            return form;
+            if (yesButtonText != null)
+            {
+                buttons.Add(DialogButton.Ok(yesButtonText));
+            }
+            if (noButtonText != null)
+            {
+                buttons.Add(DialogButton.No(noButtonText));
+            }
+            if (cancelButtonText != null)
+            {
+                buttons.Add(DialogButton.Cancel(cancelButtonText));
+            }
+
+            return new FormDialog(dialogStyle, message, yesButtonText, buttons.ToArray());
         }
     }
 }
