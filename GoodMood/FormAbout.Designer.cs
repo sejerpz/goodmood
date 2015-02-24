@@ -41,7 +41,7 @@
             // metroLabelVersion
             // 
             this.metroLabelVersion.AutoSize = true;
-            this.metroLabelVersion.Location = new System.Drawing.Point(50, 63);
+            this.metroLabelVersion.Location = new System.Drawing.Point(25, 66);
             this.metroLabelVersion.Name = "metroLabelVersion";
             this.metroLabelVersion.Size = new System.Drawing.Size(119, 19);
             this.metroLabelVersion.TabIndex = 0;
@@ -50,7 +50,7 @@
             // metroLabelCopyRight
             // 
             this.metroLabelCopyRight.AutoSize = true;
-            this.metroLabelCopyRight.Location = new System.Drawing.Point(50, 97);
+            this.metroLabelCopyRight.Location = new System.Drawing.Point(25, 99);
             this.metroLabelCopyRight.Name = "metroLabelCopyRight";
             this.metroLabelCopyRight.Size = new System.Drawing.Size(137, 19);
             this.metroLabelCopyRight.TabIndex = 1;
@@ -59,7 +59,7 @@
             // metroLinkWebSite
             // 
             this.metroLinkWebSite.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroLinkWebSite.Location = new System.Drawing.Point(98, 133);
+            this.metroLinkWebSite.Location = new System.Drawing.Point(98, 137);
             this.metroLinkWebSite.Name = "metroLinkWebSite";
             this.metroLinkWebSite.Size = new System.Drawing.Size(146, 23);
             this.metroLinkWebSite.TabIndex = 2;
@@ -73,7 +73,7 @@
             // metroLinkCheckUpdates
             // 
             this.metroLinkCheckUpdates.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroLinkCheckUpdates.Location = new System.Drawing.Point(175, 62);
+            this.metroLinkCheckUpdates.Location = new System.Drawing.Point(175, 65);
             this.metroLinkCheckUpdates.Name = "metroLinkCheckUpdates";
             this.metroLinkCheckUpdates.Size = new System.Drawing.Size(151, 23);
             this.metroLinkCheckUpdates.TabIndex = 3;
