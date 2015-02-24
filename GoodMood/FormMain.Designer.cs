@@ -48,17 +48,17 @@
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroToolTips = new MetroFramework.Components.MetroToolTip();
+            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBoxDonate = new System.Windows.Forms.PictureBox();
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
-            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.contextMenuStripMain.SuspendLayout();
+            this.contextMenuStripDonate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
-            this.contextMenuStripDonate.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabelTitle
@@ -189,6 +189,13 @@
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
+            // contextMenuStripDonate
+            // 
+            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDonatePayPal});
+            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
+            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
+            // 
             // pictureBoxDonate
             // 
             this.pictureBoxDonate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -210,7 +217,7 @@
             this.pictureBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBoxSettings.Image = global::GoodMood.Properties.Resources.Edit14;
-            this.pictureBoxSettings.Location = new System.Drawing.Point(366, 8);
+            this.pictureBoxSettings.Location = new System.Drawing.Point(368, 8);
             this.pictureBoxSettings.Name = "pictureBoxSettings";
             this.pictureBoxSettings.Size = new System.Drawing.Size(14, 14);
             this.pictureBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -234,13 +241,6 @@
             this.pictureBoxPreview.TabStop = false;
             this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
-            // 
-            // contextMenuStripDonate
-            // 
-            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemDonatePayPal});
-            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
             // 
             // toolStripMenuItemDonatePayPal
             // 
@@ -266,10 +266,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.contextMenuStripMain.ResumeLayout(false);
+            this.contextMenuStripDonate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
-            this.contextMenuStripDonate.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
