@@ -19,71 +19,64 @@ namespace GoodMood
             }
         }
 
-        public static void Info(string message, string okButtonText = "&Ok")
+        public static void Info(string message, DialogButton okButton = null)
         {
-            Info(message, "", okButtonText);
+            Info(message, "", okButton ?? DialogButton.Ok());
         }
 
-        public static void Info(string message, string detailMessage, string okButtonText = "&Ok")
+        public static void Info(string message, string detailMessage, DialogButton okButton = null)
         {
             if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
 
-            using (var form = CreateDialog(FormDialog.MessageStyle.Info, message, detailMessage, okButtonText))
+            using (var form = CreateDialog(FormDialog.MessageStyle.Info, message, detailMessage, okButton ?? DialogButton.Ok()))
             {
                 form.ShowDialog();
             }
         }
 
-        public static FormDialog.MessageResult Query(string message,  string yesButtonText, string noButtonText, string cancelButtonText = null)
+        public static FormDialog.MessageResult Query(string message, DialogButton yesButton, DialogButton noButton, DialogButton cancelButton = null)
         {
-            return Query(message, "", yesButtonText, noButtonText, cancelButtonText);
+            return Query(message, "", yesButton, noButton, cancelButton);
         }
 
-        public static FormDialog.MessageResult Query(string message, string detailMessage, string yesButtonText, string noButtonText, string cancelButtonText = null)
+        public static FormDialog.MessageResult Query(string message, string detailMessage, DialogButton yesButton, DialogButton noButton, DialogButton cancelButton = null)
         {
             if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
-            if (string.IsNullOrEmpty(yesButtonText)) throw new ArgumentException("yesButtonText argument required");
-            if (string.IsNullOrEmpty(noButtonText)) throw new ArgumentException("noButtonText argument required");
+            if (yesButton == null) throw new ArgumentNullException("yesButton  argument required");
+            if (noButton == null) throw new ArgumentNullException("noButton argument required");
 
-            using (var form = CreateDialog(FormDialog.MessageStyle.Query, message, detailMessage, yesButtonText, noButtonText, cancelButtonText))
+            List<DialogButton> buttons = new List<DialogButton>();
+            buttons.Add(yesButton);
+            buttons.Add(noButton);
+            if (cancelButton != null)
+            {
+                buttons.Add(cancelButton);
+            }
+
+            using (var form = CreateDialog(FormDialog.MessageStyle.Query, message, detailMessage, buttons.ToArray()))
             {
                 return form.ShowDialog();
             }
         }
 
-        public static void Warning(string message, string okButtonText = "&Ok")
+        public static void Warning(string message, DialogButton okButton = null)
         {
-            Warning(message, "", okButtonText);
+            Warning(message, "", okButton ?? DialogButton.Ok());
         }
 
-        public static void Warning(string message, string detailMessage, string okButtonText = "&Ok")
+        public static void Warning(string message, string detailMessage, DialogButton okButton = null)
         {
             if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
 
-            using (var form = CreateDialog(FormDialog.MessageStyle.Warning, message, detailMessage, okButtonText))
+            using (var form = CreateDialog(FormDialog.MessageStyle.Warning, message, detailMessage, okButton ?? DialogButton.Ok()))
             {
                 form.ShowDialog();
             }
         }
 
-        private static FormDialog CreateDialog(FormDialog.MessageStyle dialogStyle, string message, string detailMessage, string yesButtonText, string noButtonText = null, string cancelButtonText = null)
+        private static FormDialog CreateDialog(FormDialog.MessageStyle dialogStyle, string message, string detailMessage, params DialogButton[] buttons)
         {
-            List<DialogButton> buttons = new List<DialogButton>();
-
-            if (yesButtonText != null)
-            {
-                buttons.Add(DialogButton.Ok(yesButtonText));
-            }
-            if (noButtonText != null)
-            {
-                buttons.Add(DialogButton.No(noButtonText));
-            }
-            if (cancelButtonText != null)
-            {
-                buttons.Add(DialogButton.Cancel(cancelButtonText));
-            }
-
-            return new FormDialog(dialogStyle, message, detailMessage, buttons.ToArray());
+            return new FormDialog(dialogStyle, message, detailMessage, buttons);
         }
     }
 }

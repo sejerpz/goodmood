@@ -66,17 +66,17 @@ namespace GoodMood
                 }
                 catch (DeploymentDownloadException dde)
                 {
-                    Interaction.Warning("Download failed.", detailMessage: "Please check your network connection, or try again later. Error: " + dde.Message);
+                    Interaction.Warning("Download failed.", "Please check your network connection, or try again later. Error: " + dde.Message);
                     return;
                 }
                 catch (InvalidDeploymentException ide)
                 {
-                    Interaction.Warning("Updated check failed.", detailMessage: "The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
+                    Interaction.Warning("Updated check failed.", "The ClickOnce deployment is corrupt. Please redeploy the application and try again. Error: " + ide.Message);
                     return;
                 }
                 catch (InvalidOperationException ioe)
                 {
-                    Interaction.Info("This application cannot be updated.", detailMessage: "It is likely not a ClickOnce application. Error: " + ioe.Message);
+                    Interaction.Info("This application cannot be updated.",  "It is likely not a ClickOnce application. Error: " + ioe.Message);
                     return;
                 }
                 
@@ -87,7 +87,7 @@ namespace GoodMood
 
                     if (!info.IsUpdateRequired)
                     {
-                        var  result = Interaction.Query("An update is available.", "Would you like to update the application now?", "Updated", "No");
+                        var result = Interaction.Query("An update is available.", "Would you like to update the application now?", DialogButton.Ok("&Update"), DialogButton.No());
                         if (result != FormDialog.MessageResult.Ok)
                         {
                             doUpdate = false;
@@ -99,7 +99,7 @@ namespace GoodMood
                         Interaction.Info("Mandatory update", "An update is required from your current " +
                             "version to version " + info.MinimumRequiredVersion.ToString() +
                             ". The application will now install the update and restart.",
-                            "Update now");
+                            DialogButton.Ok("&Update now"));
                     }
 
                     if (doUpdate)
@@ -110,7 +110,7 @@ namespace GoodMood
                             {
                                 ad.Update();
                             }
-                            Interaction.Info("The application has been upgraded", "A restart is required.", "Restart");
+                            Interaction.Info("The application has been upgraded", "A restart is required.", DialogButton.Ok("Restart"));
                             Application.Restart();
                         }
                         catch (DeploymentDownloadException ex)
@@ -121,7 +121,7 @@ namespace GoodMood
                 }
                 else
                 {
-                    Interaction.Info("No update available.", detailMessage: "You are running the latest version :)");
+                    Interaction.Info("No update available.", "You are running the latest version :)");
                 }
             }
         }
