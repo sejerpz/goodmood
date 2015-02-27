@@ -131,6 +131,12 @@
     <Compile Include="FormDialog.Designer.cs">
       <DependentUpon>FormDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSettings.Designer.cs">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTrayTooltip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="CommandlineOptions.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="WaitCursor.cs" />
     <Compile Include="Wallpaper.cs" />
     <EmbeddedResource Include="FormAbout.resx">
@@ -171,6 +178,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTrayTooltip.resx">
       <DependentUpon>FormTrayTooltip.cs</DependentUpon>

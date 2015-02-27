@@ -39,24 +39,20 @@
             this.toolStripMenuItemSetWallpaper = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSettingCheckPictureUpdates = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSettingSetBackground = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemLauchAtStartup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroToolTips = new MetroFramework.Components.MetroToolTip();
-            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBoxDonate = new System.Windows.Forms.PictureBox();
+            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
-            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.contextMenuStripMain.SuspendLayout();
-            this.contextMenuStripDonate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).BeginInit();
+            this.contextMenuStripDonate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +93,7 @@
             this.toolStripMenuItemAbout,
             this.toolStripMenuItemExit});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(217, 126);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(217, 148);
             // 
             // toolStripMenuItemRefresh
             // 
@@ -120,47 +116,10 @@
             // 
             // toolStripMenuItemSettings
             // 
-            this.toolStripMenuItemSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSettingCheckPictureUpdates,
-            this.toolStripMenuItemSettingSetBackground,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItemLauchAtStartup});
             this.toolStripMenuItemSettings.Name = "toolStripMenuItemSettings";
             this.toolStripMenuItemSettings.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemSettings.Text = "Settings";
-            // 
-            // toolStripMenuItemSettingCheckPictureUpdates
-            // 
-            this.toolStripMenuItemSettingCheckPictureUpdates.Checked = true;
-            this.toolStripMenuItemSettingCheckPictureUpdates.CheckOnClick = true;
-            this.toolStripMenuItemSettingCheckPictureUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemSettingCheckPictureUpdates.Name = "toolStripMenuItemSettingCheckPictureUpdates";
-            this.toolStripMenuItemSettingCheckPictureUpdates.Size = new System.Drawing.Size(332, 22);
-            this.toolStripMenuItemSettingCheckPictureUpdates.Text = "Automatically check for new pictures";
-            this.toolStripMenuItemSettingCheckPictureUpdates.CheckedChanged += new System.EventHandler(this.toolStripMenuItemSettingCheckPictureUpdates_CheckedChanged);
-            // 
-            // toolStripMenuItemSettingSetBackground
-            // 
-            this.toolStripMenuItemSettingSetBackground.Checked = true;
-            this.toolStripMenuItemSettingSetBackground.CheckOnClick = true;
-            this.toolStripMenuItemSettingSetBackground.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemSettingSetBackground.Name = "toolStripMenuItemSettingSetBackground";
-            this.toolStripMenuItemSettingSetBackground.Size = new System.Drawing.Size(332, 22);
-            this.toolStripMenuItemSettingSetBackground.Text = "Automatically set picture as desktop background";
-            this.toolStripMenuItemSettingSetBackground.CheckedChanged += new System.EventHandler(this.toolStripMenuItemSettingSetBackground_CheckedChanged);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(329, 6);
-            // 
-            // toolStripMenuItemLauchAtStartup
-            // 
-            this.toolStripMenuItemLauchAtStartup.CheckOnClick = true;
-            this.toolStripMenuItemLauchAtStartup.Name = "toolStripMenuItemLauchAtStartup";
-            this.toolStripMenuItemLauchAtStartup.Size = new System.Drawing.Size(332, 22);
-            this.toolStripMenuItemLauchAtStartup.Text = "Run on Windows startup";
-            this.toolStripMenuItemLauchAtStartup.CheckedChanged += new System.EventHandler(this.toolStripMenuItemLauchAtStartup_CheckedChanged);
+            this.toolStripMenuItemSettings.Text = "Settings...";
+            this.toolStripMenuItemSettings.Click += new System.EventHandler(this.toolStripMenuItemSettings_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -189,13 +148,6 @@
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
-            // contextMenuStripDonate
-            // 
-            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemDonatePayPal});
-            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
-            // 
             // pictureBoxDonate
             // 
             this.pictureBoxDonate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -210,6 +162,21 @@
             this.metroToolTips.SetToolTip(this.pictureBoxDonate, "Support this App, please make a donation!");
             this.pictureBoxDonate.EnabledChanged += new System.EventHandler(this.pictureBoxDonate_EnabledChanged);
             this.pictureBoxDonate.Click += new System.EventHandler(this.pictureBoxDonate_Click);
+            // 
+            // contextMenuStripDonate
+            // 
+            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDonatePayPal});
+            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
+            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
+            // 
+            // toolStripMenuItemDonatePayPal
+            // 
+            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
+            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
+            this.toolStripMenuItemDonatePayPal.Size = new System.Drawing.Size(185, 22);
+            this.toolStripMenuItemDonatePayPal.Text = "Donate with PayPal...";
+            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
             // 
             // pictureBoxSettings
             // 
@@ -242,14 +209,6 @@
             this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
             // 
-            // toolStripMenuItemDonatePayPal
-            // 
-            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
-            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
-            this.toolStripMenuItemDonatePayPal.Size = new System.Drawing.Size(185, 22);
-            this.toolStripMenuItemDonatePayPal.Text = "Donate with PayPal...";
-            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,8 +225,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.contextMenuStripMain.ResumeLayout(false);
-            this.contextMenuStripDonate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).EndInit();
+            this.contextMenuStripDonate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.ResumeLayout(false);
@@ -290,11 +249,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSettings;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSettingCheckPictureUpdates;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSettingSetBackground;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemLauchAtStartup;
         private System.Windows.Forms.PictureBox pictureBoxDonate;
         private MetroFramework.Components.MetroToolTip metroToolTips;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripDonate;

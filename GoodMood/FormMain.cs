@@ -38,9 +38,7 @@ namespace GoodMood
             try
             {
                 this.startupOptions = startupOptions;
-                ReadSettings();
-                
-                SynchronizeLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
+                Utility.SynchronizeLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
             }
             catch (Exception ex)
             {
@@ -133,20 +131,6 @@ namespace GoodMood
             }
         }
 
-        private void ReadSettings()
-        {
-            try
-            {
-                toolStripMenuItemSettingCheckPictureUpdates.Checked = Properties.Settings.Default.CheckPictureUpdate;
-                toolStripMenuItemSettingSetBackground.Checked = Properties.Settings.Default.SetBackground;
-                toolStripMenuItemLauchAtStartup.Checked = Properties.Settings.Default.LaunchAtStartup;
-            }
-            catch (Exception ex)
-            {
-                Interaction.Error(ex);
-            }
-        }
-
         private void SetWallpaper()
         {
             try
@@ -156,25 +140,6 @@ namespace GoodMood
             catch (Exception ex)
             {
                 Interaction.Error(ex);
-            }
-        }
-
-        private void SynchronizeLaunchAtStartup(bool newValue)
-        {
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey
-                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            string keyValue = "\"" + Application.ExecutablePath.ToString() + "\" /quiet";
-
-            if (newValue)
-            {
-                if ((string)rk.GetValue(Application.ProductName) != keyValue)
-                {
-                    rk.SetValue(Application.ProductName, keyValue);
-                }
-            }
-            else
-            {
-                rk.DeleteValue(Application.ProductName, false);
             }
         }
 
@@ -289,47 +254,12 @@ namespace GoodMood
             notifyIcon.ShowBalloonTip(1000, this.Text, "Hey, click here if you need me again ;)", ToolTipIcon.Info);
         }
 
-        private void toolStripMenuItemSettingCheckPictureUpdates_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.CheckPictureUpdate != toolStripMenuItemSettingCheckPictureUpdates.Checked)
-            {
-                Properties.Settings.Default.CheckPictureUpdate = toolStripMenuItemSettingCheckPictureUpdates.Checked;
-                Properties.Settings.Default.Save();
-            }
-        }
-
-        private void toolStripMenuItemSettingSetBackground_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.SetBackground != toolStripMenuItemSettingSetBackground.Checked)
-            {
-                Properties.Settings.Default.SetBackground = toolStripMenuItemSettingSetBackground.Checked;
-                Properties.Settings.Default.Save();
-            }
-        }
-
         private void pictureBoxSettings_EnabledChanged(object sender, EventArgs e)
         {
             contextMenuStripMain.Enabled = pictureBoxSettings.Enabled;
             pictureBoxSettings.Image = pictureBoxSettings.Enabled ? Properties.Resources.Edit14 : Properties.Resources.Edit14Disabled;
         }
-
-        private void toolStripMenuItemLauchAtStartup_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Properties.Settings.Default.LaunchAtStartup != toolStripMenuItemLauchAtStartup.Checked)
-                {
-                    Properties.Settings.Default.LaunchAtStartup = toolStripMenuItemLauchAtStartup.Checked;
-                    Properties.Settings.Default.Save();
-                    SynchronizeLaunchAtStartup(toolStripMenuItemLauchAtStartup.Checked);
-                }
-            }
-            catch (Exception ex)
-            {
-                Interaction.Error(ex);
-            }
-        }
-
+    
         private void toolStripMenuItemAbout_Click(object sender, EventArgs e)
         {
             using(var formAbout = new FormAbout())
@@ -415,6 +345,14 @@ namespace GoodMood
                 customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
                 customTooltip.Show();
                 customTooltip.StayVisible();
+            }
+        }
+
+        private void toolStripMenuItemSettings_Click(object sender, EventArgs e)
+        {
+            using(var formSettings = new FormSettings())
+            {
+                formSettings.ShowDialog();
             }
         }
     }
