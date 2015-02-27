@@ -67,5 +67,29 @@ namespace GoodMood.Properties {
                 return ((string)(this["CrashReportURL"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FillBackground {
+            get {
+                return ((bool)(this["FillBackground"]));
+            }
+            set {
+                this["FillBackground"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Bright")]
+        public string FillColorMatch {
+            get {
+                return ((string)(this["FillColorMatch"]));
+            }
+            set {
+                this["FillColorMatch"] = value;
+            }
+        }
     }
 }

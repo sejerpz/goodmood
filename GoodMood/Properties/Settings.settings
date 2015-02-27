@@ -14,5 +14,11 @@
     <Setting Name="CrashReportURL" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://colori.no-ip.org/briser/api/v1/goodmood/crash-report</Value>
     </Setting>
+    <Setting Name="FillBackground" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FillColorMatch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Bright</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

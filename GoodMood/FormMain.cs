@@ -19,6 +19,7 @@ using GoodMood.Properties;
 using GoodMood.UI;
 using GoodMood.Photo;
 using GoodMood.Utility;
+using GoodMood.Extensions;
 
 namespace GoodMood
 {
@@ -117,7 +118,7 @@ namespace GoodMood
                 {
                     if (Properties.Settings.Default.SetBackground)
                     {
-                        SetWallpaper();
+                        SetWallpaper(pictureManager.Image);
                     }
                 }
             }
@@ -125,6 +126,41 @@ namespace GoodMood
             {
                 Interaction.Error(ex);
             }
+        }
+
+        private Image PreparePicture(Image image)
+        {
+            if (Properties.Settings.Default.FillBackground)
+            {
+                Screen screen = null;
+
+                // get the screen with the biggest area
+                foreach(var item in Screen.AllScreens)
+                {
+                    if (screen == null || (item.Bounds.Width * item.Bounds.Height) > (screen.Bounds.Width * screen.Bounds.Height))
+                        screen = item;
+                }
+
+                var wallpaper = new Bitmap(screen.Bounds.Width, screen.Bounds.Height);
+                var color = new ColorFinder(
+                    string.Compare(Properties.Settings.Default.FillColorMatch, "bright", true) == 0 ? 
+                        ColorFinder.FavorBrightCallback : ColorFinder.FavorDarkCallback
+                    ).GetMostProminentColor(new Bitmap(image));
+
+                using(var graphics = Graphics.FromImage(wallpaper))
+                {
+                    int x = Math.Max(0, (wallpaper.Width - image.Width) / 2);
+                    int y = Math.Max(0, (wallpaper.Height - image.Height) / 2);
+                    var r = new Rectangle (x, y, Math.Min(image.Width + 8, wallpaper.Width), Math.Min(image.Height + 8, wallpaper.Width));
+
+                    graphics.Clear(color);
+                    graphics.DrawShadow(r);
+                    graphics.DrawImage(image,x, y, image.Width, image.Height);
+                }
+                return wallpaper;
+            }
+            else
+                return image;
         }
 
         private void OnPictureUpdateEnd(PhotoManager pictureManager)
@@ -142,11 +178,11 @@ namespace GoodMood
             }
         }
 
-        private void SetWallpaper()
+        private void SetWallpaper(Image image)
         {
             try
             {
-                Wallpaper.Set(pictureBoxPreview.Image, Wallpaper.Style.None);
+                Wallpaper.Set(PreparePicture(image), Wallpaper.Style.None);
             }
             catch (Exception ex)
             {
@@ -263,7 +299,7 @@ namespace GoodMood
 
         private void toolStripMenuItemSetWallpaper_Click(object sender, EventArgs e)
         {
-            SetWallpaper();
+            SetWallpaper(pictureManager.Image);
         }
 
         private void toolStripMenuItemExit_Click(object sender, EventArgs e)
