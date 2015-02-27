@@ -2,6 +2,7 @@
  * Copyright 2015 Andrea Del Signore sejerpz@gmail.com
  */
 
+using GoodMood.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,6 +25,7 @@ namespace GoodMood
         public event EventHandler PictureUpdateBegin;
         public event EventHandler PictureUpdateEnd;
         public event EventHandler<ThreadExceptionEventArgs> PictureUpdateError;
+        public event EventHandler PictureUpdateSuccess;
 
         public PictureUri Uri
         {
@@ -94,6 +96,12 @@ namespace GoodMood
                 PictureUpdateError(this, e);
         }
 
+        protected virtual void OnPictureUpdateSuccess(EventArgs e)
+        {
+            if (PictureUpdateSuccess != null)
+                PictureUpdateSuccess(this, e);
+        }
+
         public void Start()
         {
             timer = new System.Threading.Timer(this.CheckUpdate, this, 0, Timeout.Infinite);
@@ -137,14 +145,8 @@ namespace GoodMood
 
                 updated = newImage != this.Image;
                 this.Image = newImage;
+                OnPictureUpdateSuccess(EventArgs.Empty);
                 return updated;
-            }
-            catch(WebException ex)
-            {
-                if (ex.Status == WebExceptionStatus.NameResolutionFailure || ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
-                    return false; // the network is down, retry again later
-                else
-                    throw ex;
             }
             catch(Exception ex)
             {
@@ -156,7 +158,6 @@ namespace GoodMood
                 OnPictureUpdateEnd(EventArgs.Empty);
             }
         }
-
 
         private async Task<Image> DownloadImage(PictureUri pictureUri)
         {

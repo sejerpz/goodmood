@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using Microsoft.Win32;
 using System.Threading;
+using System.Net;
+using GoodMood.Properties;
 
 namespace GoodMood
 {
@@ -47,7 +49,8 @@ namespace GoodMood
 
             this.pictureManager = new PictureManager(new NationalGeographicPoDPictureUri());
             this.pictureManager.PictureUpdateBegin += pictureManager_PictureUpdateBegin;
-            this.pictureManager.PictureUpdateEnd += pictureInfo_PictureUpdateEnd;
+            this.pictureManager.PictureUpdateSuccess += pictureManager_PictureUpdateSuccess;
+            this.pictureManager.PictureUpdateEnd += pictureManager_PictureUpdateEnd;
             this.pictureManager.PictureUpdateError += pictureManager_PictureUpdateError;
 
             if (Properties.Settings.Default.CheckPictureUpdate)
@@ -65,14 +68,6 @@ namespace GoodMood
             this.toolTipTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTipTimer.Interval = 1250;
             this.toolTipTimer.Tick += toolTipTimer_Tick;
-        }
-
-        void pictureManager_PictureUpdateError(object sender, ThreadExceptionEventArgs e)
-        {
-            this.Invoke(new Action(() =>
-            {
-                Interaction.Error(e.Exception);
-            }));
         }
 
         void Application_Idle(object sender, EventArgs e)
@@ -100,23 +95,21 @@ namespace GoodMood
             pictureBoxPreview.Enabled = false;
         }
 
-        private void OnPictureUpdateEnd(PictureManager pictureManager)
+        private void OnPictureUpdateSuccess(PictureManager pictureManager)
         {
             try
             {
-                metroProgressSpinnerLoader.Enabled = true;
-                metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = false;
-                pictureBoxPreview.Enabled = true;
                 pictureBoxPreview.Image = pictureManager.Image;
                 metroToolTips.SetToolTip(pictureBoxPreview, string.Format("Go To {0} site...", pictureManager.Uri.ProviderDescription));
                 pictureBoxPreview.Cursor = Cursors.Hand;
+                this.toolStripMenuItemSetWallpaper.Enabled = true;
                 metroLabelTitle.Text = pictureManager.Uri.PhotoDescription ?? "";
-                pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = true;
+
                 if (customTooltip != null && !customTooltip.IsDisposed)
                 {
                     customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
                 }
-            
+
                 if (pictureManager.Image != null)
                 {
                     if (Properties.Settings.Default.SetBackground)
@@ -124,6 +117,21 @@ namespace GoodMood
                         SetWallpaper();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Interaction.Error(ex);
+            }
+        }
+
+        private void OnPictureUpdateEnd(PictureManager pictureManager)
+        {
+            try
+            {
+                metroProgressSpinnerLoader.Enabled = true;
+                metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = false;
+                pictureBoxPreview.Enabled = true;
+                pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -186,11 +194,44 @@ namespace GoodMood
             }));
         }
 
-        private void pictureInfo_PictureUpdateEnd(object sender, EventArgs e)
+        private void pictureManager_PictureUpdateEnd(object sender, EventArgs e)
         {
             this.Invoke(new Action(() => 
             { 
                 OnPictureUpdateEnd((PictureManager)sender); 
+            }));
+        }
+
+        private void pictureManager_PictureUpdateSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                OnPictureUpdateSuccess((PictureManager)sender);
+            }));
+        }
+
+        private void pictureManager_PictureUpdateError(object sender, ThreadExceptionEventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                var wex = e.Exception as WebException;
+
+                if (wex != null
+                    && (wex.Status == WebExceptionStatus.NameResolutionFailure
+                    || wex.Status == WebExceptionStatus.Timeout
+                    || wex.Status == WebExceptionStatus.ConnectFailure
+                    || wex.Status == WebExceptionStatus.ProtocolError))
+                {
+                    this.pictureBoxPreview.Image = Resources.NoInternet225;
+                    this.pictureBoxPreview.Cursor = Cursors.Default;
+                    this.metroToolTips.SetToolTip(pictureBoxPreview, "");
+                    this.metroLabelTitle.Text = "Please check your Internet Connection...";
+                    this.toolStripMenuItemSetWallpaper.Enabled = false;
+                }
+                else
+                {
+                    Interaction.Error(e.Exception);
+                }
             }));
         }
 

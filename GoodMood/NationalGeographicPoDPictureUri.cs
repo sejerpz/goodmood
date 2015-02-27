@@ -32,19 +32,19 @@ namespace GoodMood
 
         public override async Task Update()
         {
-            var siteUri = new Uri(webUri);
-            var client = new WebClient();
-            var data = await client.DownloadDataTaskAsync(siteUri);
-            string html;
-
-            using (var storage = new MemoryStream(data))
-            using (var reader = new StreamReader(storage))
-            {
-                html = reader.ReadToEnd();
-            }
-
             try
             {
+                var siteUri = new Uri(webUri);
+                var client = new WebClient();
+                string html;
+                byte[] data = await client.DownloadDataTaskAsync(siteUri);
+
+                using (var storage = new MemoryStream(data))
+                using (var reader = new StreamReader(storage))
+                {
+                    html = reader.ReadToEnd();
+                }
+
                 var doc = new HtmlDocument();
                 doc.LoadHtml(html);
                 var divs = doc.DocumentNode.Descendants("div").Where(d =>
