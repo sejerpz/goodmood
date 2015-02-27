@@ -163,7 +163,7 @@ namespace GoodMood
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            string keyValue = Application.ExecutablePath.ToString() + " /quiet";
+            string keyValue = "\"" + Application.ExecutablePath.ToString() + "\" /quiet";
 
             if (newValue)
             {
