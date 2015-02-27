@@ -12,12 +12,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GoodMood
+namespace GoodMood.Photo
 {
-    class PictureManager
+    class PhotoManager
     {
         private Image image;
-        private PictureUri pictureUri;
+        private PhotoUri pictureUri;
         private string lastDowloadedUri = null;
         private System.Threading.Timer timer;
         private bool isRunning = false;
@@ -27,7 +27,7 @@ namespace GoodMood
         public event EventHandler<ThreadExceptionEventArgs> PictureUpdateError;
         public event EventHandler PictureUpdateSuccess;
 
-        public PictureUri Uri
+        public PhotoUri Uri
         {
             get
             {
@@ -59,7 +59,7 @@ namespace GoodMood
             }
         }
 
-        public PictureManager(PictureUri pictureUri)
+        public PhotoManager(PhotoUri pictureUri)
         {
             this.pictureUri = pictureUri;
         }
@@ -159,7 +159,7 @@ namespace GoodMood
             }
         }
 
-        private async Task<Image> DownloadImage(PictureUri pictureUri)
+        private async Task<Image> DownloadImage(PhotoUri pictureUri)
         {
             try
             {
@@ -168,7 +168,7 @@ namespace GoodMood
                 // check cached uri
                 if (string.IsNullOrEmpty(lastDowloadedUri) || pictureUri.PhotoAddress != lastDowloadedUri)
                 {
-                    var dowloader = new PictureDowloader();
+                    var dowloader = new PhotoDowloader();
 
                     await dowloader.Download(pictureUri);
                     lastDowloadedUri = pictureUri.PhotoAddress;

@@ -1,4 +1,6 @@
-﻿using MetroFramework.Forms;
+﻿using GoodMood.UI;
+using GoodMood.Utility;
+using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,7 +80,7 @@ namespace GoodMood
             {
                 Properties.Settings.Default.LaunchAtStartup = newValue;
                 Properties.Settings.Default.Save();
-                Utility.SynchronizeLaunchAtStartup(newValue);
+                Windows.SetLaunchAtStartup(newValue);
             }
         }
 

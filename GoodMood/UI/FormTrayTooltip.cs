@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GoodMood
+namespace GoodMood.UI
 {
     public partial class FormTrayTooltip : MetroForm
     {

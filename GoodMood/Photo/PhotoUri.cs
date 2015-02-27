@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodMood
+namespace GoodMood.Photo
 {
-    abstract class PictureUri
+    abstract class PhotoUri
     {
         private string photoAddress = null;
         private string photoDescription = null;
 
-        public PictureUri()
+        public PhotoUri()
         {
         }
 

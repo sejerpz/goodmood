@@ -2,6 +2,8 @@
  * Copyright 2015 Andrea Del Signore sejerpz@gmail.com
  */
 
+using GoodMood.UI;
+using GoodMood.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;

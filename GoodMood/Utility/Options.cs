@@ -152,7 +152,7 @@ namespace NDesk.Options
 #elif MONO 
 namespace Mono.Options
 #else
-namespace GoodMood
+namespace GoodMood.Utility
 #endif
 {
 	static class StringCoda {

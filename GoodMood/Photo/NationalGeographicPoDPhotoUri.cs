@@ -11,9 +11,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodMood
+namespace GoodMood.Photo
 {
-    class NationalGeographicPoDPictureUri : PictureUri
+    class NationalGeographicPhotoUri : PhotoUri
     {
         private const string webUri = @"http://photography.nationalgeographic.com/photography/photo-of-the-day/";
 

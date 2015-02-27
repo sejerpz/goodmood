@@ -119,16 +119,16 @@
     <Compile Include="FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormError.cs">
+    <Compile Include="UI\FormError.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormError.Designer.cs">
+    <Compile Include="UI\FormError.Designer.cs">
       <DependentUpon>FormError.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDialog.cs">
+    <Compile Include="UI\FormDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDialog.Designer.cs">
+    <Compile Include="UI\FormDialog.Designer.cs">
       <DependentUpon>FormDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSettings.cs">
@@ -137,24 +137,24 @@
     <Compile Include="FormSettings.Designer.cs">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTrayTooltip.cs">
+    <Compile Include="UI\FormTrayTooltip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTrayTooltip.Designer.cs">
+    <Compile Include="UI\FormTrayTooltip.Designer.cs">
       <DependentUpon>FormTrayTooltip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interaction.cs" />
-    <Compile Include="NationalGeographicPoDPictureUri.cs" />
+    <Compile Include="UI\Interaction.cs" />
+    <Compile Include="Photo\NationalGeographicPoDPhotoUri.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Options.cs" />
-    <Compile Include="PictureDowloader.cs" />
-    <Compile Include="PictureManager.cs" />
-    <Compile Include="PictureUri.cs" />
+    <Compile Include="Utility\Options.cs" />
+    <Compile Include="Photo\PhotoDowloader.cs" />
+    <Compile Include="Photo\PhotoManager.cs" />
+    <Compile Include="Photo\PhotoUri.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -163,16 +163,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="CommandlineOptions.cs" />
-    <Compile Include="Utility.cs" />
-    <Compile Include="WaitCursor.cs" />
-    <Compile Include="Wallpaper.cs" />
+    <Compile Include="Utility\Windows.cs" />
+    <Compile Include="UI\WaitCursor.cs" />
+    <Compile Include="Utility\Wallpaper.cs" />
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormError.resx">
+    <EmbeddedResource Include="UI\FormError.resx">
       <DependentUpon>FormError.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDialog.resx">
+    <EmbeddedResource Include="UI\FormDialog.resx">
       <DependentUpon>FormDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
@@ -182,7 +182,7 @@
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTrayTooltip.resx">
+    <EmbeddedResource Include="UI\FormTrayTooltip.resx">
       <DependentUpon>FormTrayTooltip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

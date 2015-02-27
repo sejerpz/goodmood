@@ -16,12 +16,15 @@ using Microsoft.Win32;
 using System.Threading;
 using System.Net;
 using GoodMood.Properties;
+using GoodMood.UI;
+using GoodMood.Photo;
+using GoodMood.Utility;
 
 namespace GoodMood
 {
     public partial class FormMain : MetroForm
     {
-        private PictureManager pictureManager;
+        private PhotoManager pictureManager;
         private bool closeByMenu = false;
         private CommandlineOptions startupOptions;
         private FormTrayTooltip customTooltip = null;
@@ -40,14 +43,14 @@ namespace GoodMood
             try
             {
                 this.startupOptions = startupOptions;
-                Utility.SynchronizeLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
+                Windows.SetLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
             }
             catch (Exception ex)
             {
                 Interaction.Error(ex);
             }
 
-            this.pictureManager = new PictureManager(new NationalGeographicPoDPictureUri());
+            this.pictureManager = new PhotoManager(new NationalGeographicPhotoUri());
             this.pictureManager.PictureUpdateBegin += pictureManager_PictureUpdateBegin;
             this.pictureManager.PictureUpdateSuccess += pictureManager_PictureUpdateSuccess;
             this.pictureManager.PictureUpdateEnd += pictureManager_PictureUpdateEnd;
@@ -87,7 +90,7 @@ namespace GoodMood
             await pictureManager.Update();
         }
 
-        private void OnPictureUpdateBegin(PictureManager pictureManager)
+        private void OnPictureUpdateBegin(PhotoManager pictureManager)
         {
             pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = false;
             metroLabelTitle.Text = string.Format("updating {0} photo of the day...", pictureManager.Uri.ProviderDescription);
@@ -95,7 +98,7 @@ namespace GoodMood
             pictureBoxPreview.Enabled = false;
         }
 
-        private void OnPictureUpdateSuccess(PictureManager pictureManager)
+        private void OnPictureUpdateSuccess(PhotoManager pictureManager)
         {
             try
             {
@@ -124,7 +127,7 @@ namespace GoodMood
             }
         }
 
-        private void OnPictureUpdateEnd(PictureManager pictureManager)
+        private void OnPictureUpdateEnd(PhotoManager pictureManager)
         {
             try
             {
@@ -190,7 +193,7 @@ namespace GoodMood
         {
             this.Invoke(new Action(() =>
             {
-                OnPictureUpdateBegin((PictureManager)sender);
+                OnPictureUpdateBegin((PhotoManager)sender);
             }));
         }
 
@@ -198,7 +201,7 @@ namespace GoodMood
         {
             this.Invoke(new Action(() => 
             { 
-                OnPictureUpdateEnd((PictureManager)sender); 
+                OnPictureUpdateEnd((PhotoManager)sender); 
             }));
         }
 
@@ -206,7 +209,7 @@ namespace GoodMood
         {
             this.Invoke(new Action(() =>
             {
-                OnPictureUpdateSuccess((PictureManager)sender);
+                OnPictureUpdateSuccess((PhotoManager)sender);
             }));
         }
 

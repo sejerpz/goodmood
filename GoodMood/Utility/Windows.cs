@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GoodMood
+namespace GoodMood.Utility
 {
-    class Utility
+    class Windows
     {
-        public static void SynchronizeLaunchAtStartup(bool newValue)
+        public static void SetLaunchAtStartup(bool newValue)
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);

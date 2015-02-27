@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoodMood.Extensions;
 
-namespace GoodMood
+namespace GoodMood.UI
 {
     public partial class FormError : MetroForm
     {

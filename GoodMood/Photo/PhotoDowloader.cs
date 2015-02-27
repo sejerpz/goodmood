@@ -11,13 +11,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodMood
+namespace GoodMood.Photo
 {
-    class PictureDowloader
+    class PhotoDowloader
     {
         public Image Image { get; private set; }
 
-        public async Task Download(PictureUri picture)
+        public async Task Download(PhotoUri picture)
         {
             try
             {

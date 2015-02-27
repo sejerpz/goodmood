@@ -1,4 +1,4 @@
-﻿namespace GoodMood
+﻿namespace GoodMood.UI
 {
     partial class FormDialog
     {
