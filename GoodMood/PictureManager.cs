@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -137,6 +138,13 @@ namespace GoodMood
                 updated = newImage != this.Image;
                 this.Image = newImage;
                 return updated;
+            }
+            catch(WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.NameResolutionFailure || ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
+                    return false; // the network is down, retry again later
+                else
+                    throw ex;
             }
             catch(Exception ex)
             {
