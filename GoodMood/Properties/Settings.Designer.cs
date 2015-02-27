@@ -82,13 +82,13 @@ namespace GoodMood.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Bright")]
-        public string FillColorMatch {
+        [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
+        public string FillColorMode {
             get {
-                return ((string)(this["FillColorMatch"]));
+                return ((string)(this["FillColorMode"]));
             }
             set {
-                this["FillColorMatch"] = value;
+                this["FillColorMode"] = value;
             }
         }
     }

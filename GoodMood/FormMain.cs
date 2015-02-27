@@ -143,7 +143,7 @@ namespace GoodMood
 
                 var wallpaper = new Bitmap(screen.Bounds.Width, screen.Bounds.Height);
                 var color = new ColorFinder(
-                    string.Compare(Properties.Settings.Default.FillColorMatch, "bright", true) == 0 ? 
+                    string.Compare(Properties.Settings.Default.FillColorMode, "bright", true) == 0 ? 
                         ColorFinder.FavorBrightCallback : ColorFinder.FavorDarkCallback
                     ).GetMostProminentColor(new Bitmap(image));
 

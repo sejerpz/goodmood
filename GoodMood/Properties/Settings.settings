@@ -17,8 +17,8 @@
     <Setting Name="FillBackground" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="FillColorMatch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Bright</Value>
+    <Setting Name="FillColorMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Dark</Value>
     </Setting>
   </Settings>
 </SettingsFile>
