@@ -29,5 +29,14 @@ namespace GoodMood.Utility
             }
         }
 
+        public static void UpgradeSettings()
+        {
+            if (Properties.Settings.Default.UpgradeSettings)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeSettings = false;
+                Properties.Settings.Default.Save();
+            }
+        }
     }
 }

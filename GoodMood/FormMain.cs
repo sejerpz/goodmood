@@ -44,6 +44,7 @@ namespace GoodMood
             try
             {
                 this.startupOptions = startupOptions;
+                Windows.UpgradeSettings();
                 Windows.SetLaunchAtStartup(Properties.Settings.Default.LaunchAtStartup);
             }
             catch (Exception ex)
