@@ -65,7 +65,7 @@ namespace GoodMood
             else
             {
                 metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = false;
-                metroLabelTitle.Text = "select 'refresh' menu' item to update the picture";
+                metroLabelTitle.Text = Strings.SelectRefreshInfo;
             }
 
             Application.Idle += Application_Idle;
@@ -95,7 +95,7 @@ namespace GoodMood
         private void OnPictureUpdateBegin(PhotoManager pictureManager)
         {
             pictureBoxDonate.Enabled = pictureBoxSettings.Enabled = false;
-            metroLabelTitle.Text = string.Format("updating {0} photo of the day...", pictureManager.Uri.ProviderDescription);
+            metroLabelTitle.Text = string.Format(Strings.UpdateInProgressInfo, pictureManager.Uri.ProviderDescription);
             metroProgressSpinnerLoader.Visible = metroProgressSpinnerLoader.Spinning = true;
             pictureBoxPreview.Enabled = false;
         }
@@ -105,7 +105,7 @@ namespace GoodMood
             try
             {
                 pictureBoxPreview.Image = pictureManager.Image;
-                metroToolTips.SetToolTip(pictureBoxPreview, string.Format("Go To {0} site...", pictureManager.Uri.ProviderDescription));
+                metroToolTips.SetToolTip(pictureBoxPreview, string.Format(Strings.GoToProviderWebSite, pictureManager.Uri.ProviderDescription));
                 pictureBoxPreview.Cursor = Cursors.Hand;
                 this.toolStripMenuItemSetWallpaper.Enabled = true;
                 metroLabelTitle.Text = pictureManager.Uri.PhotoDescription ?? "";
@@ -265,7 +265,7 @@ namespace GoodMood
                     this.pictureBoxPreview.Image = Resources.NoInternet225;
                     this.pictureBoxPreview.Cursor = Cursors.Default;
                     this.metroToolTips.SetToolTip(pictureBoxPreview, "");
-                    this.metroLabelTitle.Text = "Please check your Internet Connection...";
+                    this.metroLabelTitle.Text = Strings.CheckYourInternetConnection;
                     this.toolStripMenuItemSetWallpaper.Enabled = false;
                 }
                 else
@@ -332,7 +332,7 @@ namespace GoodMood
         private void HideToTrayArea()
         {
             this.Visible = false;
-            notifyIcon.ShowBalloonTip(1000, this.Text, "Hey, click here if you need me again ;)", ToolTipIcon.Info);
+            notifyIcon.ShowBalloonTip(1000, this.Text, Strings.TrayHideInfo, ToolTipIcon.Info);
         }
 
         private void pictureBoxSettings_EnabledChanged(object sender, EventArgs e)

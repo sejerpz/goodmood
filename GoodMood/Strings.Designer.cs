@@ -88,7 +88,7 @@ namespace GoodMood {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Please check your Internet Connection....
+        ///   Cerca una stringa localizzata simile a Please check your Internet connection....
         /// </summary>
         internal static string CheckYourInternetConnection {
             get {
@@ -106,20 +106,11 @@ namespace GoodMood {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a Please check your network connection, or try again later. Error: {0}.
+        ///   Cerca una stringa localizzata simile a Please check your Internet connection, or try again later. Error: {0}.
         /// </summary>
         internal static string DowloadFailedMessage {
             get {
                 return ResourceManager.GetString("DowloadFailedMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una stringa localizzata simile a ex argument required.
-        /// </summary>
-        internal static string ExArgumentRequired {
-            get {
-                return ResourceManager.GetString("ExArgumentRequired", resourceCulture);
             }
         }
         
@@ -151,24 +142,6 @@ namespace GoodMood {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a message argument required.
-        /// </summary>
-        internal static string MessageArgumentRequired {
-            get {
-                return ResourceManager.GetString("MessageArgumentRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una stringa localizzata simile a noButton argument required.
-        /// </summary>
-        internal static string NoButtonArgumentRequired {
-            get {
-                return ResourceManager.GetString("NoButtonArgumentRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Cerca una stringa localizzata simile a No update available..
         /// </summary>
         internal static string NoUpdate {
@@ -196,7 +169,7 @@ namespace GoodMood {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a .
+        ///   Cerca una stringa localizzata simile a Hey, click here if you need me again ;).
         /// </summary>
         internal static string TrayHideInfo {
             get {
@@ -291,15 +264,6 @@ namespace GoodMood {
         internal static string WallpaperCopyError {
             get {
                 return ResourceManager.GetString("WallpaperCopyError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una stringa localizzata simile a yesButton  argument required.
-        /// </summary>
-        internal static string YesButtonArgumentRequired {
-            get {
-                return ResourceManager.GetString("YesButtonArgumentRequired", resourceCulture);
             }
         }
     }

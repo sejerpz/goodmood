@@ -117,27 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicaionUpgraded" xml:space="preserve">
+    <value>The application has been upgraded</value>
+  </data>
+  <data name="ApplicaionUpgradedMessage" xml:space="preserve">
+    <value>A restart is required.</value>
+  </data>
+  <data name="ApplicationUpgradedButtonText" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="CheckYourInternetConnection" xml:space="preserve">
+    <value>Please check your Internet connection...</value>
+  </data>
   <data name="DowloadFailed" xml:space="preserve">
     <value>Download failed.</value>
   </data>
   <data name="DowloadFailedMessage" xml:space="preserve">
-    <value>Please check your network connection, or try again later. Error: {0}</value>
+    <value>Please check your Internet connection, or try again later. Error: {0}</value>
     <comment>The 0 argument is the error text</comment>
   </data>
-  <data name="ExArgumentRequired" xml:space="preserve">
-    <value>ex argument required</value>
+  <data name="GoToProviderWebSite" xml:space="preserve">
+    <value>Go To {0} site...</value>
+    <comment>The 0 argument is the provider description</comment>
   </data>
   <data name="MandatoryUpdate" xml:space="preserve">
     <value>Mandatory update.</value>
   </data>
   <data name="MandatoryUpdateMessage" xml:space="preserve">
-    <value />
+    <value>An update is required from your current version to version {0}. The application will now install the update and restart.</value>
+    <comment>The 0 argument is the version string</comment>
   </data>
-  <data name="MessageArgumentRequired" xml:space="preserve">
-    <value>message argument required</value>
+  <data name="NoUpdate" xml:space="preserve">
+    <value>No update available.</value>
   </data>
-  <data name="NoButtonArgumentRequired" xml:space="preserve">
-    <value>noButton argument required</value>
+  <data name="NoUpdateMessage" xml:space="preserve">
+    <value>You are running the latest version :)</value>
+  </data>
+  <data name="SelectRefreshInfo" xml:space="preserve">
+    <value>select 'refresh' menu' item to update the picture</value>
+  </data>
+  <data name="TrayHideInfo" xml:space="preserve">
+    <value>Hey, click here if you need me again ;)</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>An update is available.</value>
@@ -162,14 +182,15 @@
     <value>It is likely not a ClickOnce application. Error: {0}</value>
     <comment>The 0 argument is the error text</comment>
   </data>
+  <data name="UpdateInProgressInfo" xml:space="preserve">
+    <value>updating {0} photo of the day...</value>
+    <comment>The 0 argument is the provider description</comment>
+  </data>
   <data name="VersionText" xml:space="preserve">
     <value>version {0}</value>
     <comment>The 0 argument is the version string</comment>
   </data>
   <data name="WallpaperCopyError" xml:space="preserve">
     <value>Cannot move new downloaded photo to 'goodmood_wallpaper.bmp' file</value>
-  </data>
-  <data name="YesButtonArgumentRequired" xml:space="preserve">
-    <value>yesButton  argument required</value>
   </data>
 </root>

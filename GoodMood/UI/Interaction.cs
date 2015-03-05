@@ -11,7 +11,7 @@ namespace GoodMood.UI
     {
         public static void Error(Exception ex, bool showSendLink = true)
         {
-            if (ex == null) throw new ArgumentNullException (Strings.ExArgumentRequired);
+            if (ex == null) throw new ArgumentNullException ("ex argument required");
 
             using (var form = new FormError(ex, showSendLink))
             {
@@ -26,7 +26,7 @@ namespace GoodMood.UI
 
         public static void Info(string message, string detailMessage, DialogButton okButton = null)
         {
-            if (string.IsNullOrEmpty(message)) throw new ArgumentException(Strings.MessageArgumentRequired);
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
 
             using (var form = CreateDialog(FormDialog.MessageStyle.Info, message, detailMessage, okButton ?? DialogButton.Ok()))
             {
@@ -41,9 +41,9 @@ namespace GoodMood.UI
 
         public static FormDialog.MessageResult Query(string message, string detailMessage, DialogButton yesButton, DialogButton noButton, DialogButton cancelButton = null)
         {
-            if (string.IsNullOrEmpty(message)) throw new ArgumentException(Strings.MessageArgumentRequired);
-            if (yesButton == null) throw new ArgumentNullException(Strings.YesButtonArgumentRequired);
-            if (noButton == null) throw new ArgumentNullException(Strings.NoButtonArgumentRequired);
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
+            if (yesButton == null) throw new ArgumentNullException("yesButton  argument required");
+            if (noButton == null) throw new ArgumentNullException("noButton argument required");
 
             List<DialogButton> buttons = new List<DialogButton>();
             buttons.Add(yesButton);
@@ -66,7 +66,7 @@ namespace GoodMood.UI
 
         public static void Warning(string message, string detailMessage, DialogButton okButton = null)
         {
-            if (string.IsNullOrEmpty(message)) throw new ArgumentException(Strings.MessageArgumentRequired);
+            if (string.IsNullOrEmpty(message)) throw new ArgumentException("message argument required");
 
             using (var form = CreateDialog(FormDialog.MessageStyle.Warning, message, detailMessage, okButton ?? DialogButton.Ok()))
             {
