@@ -117,4 +117,259 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="metroCheckBoxFillBackground.Text" xml:space="preserve">
+    <value>Center photo on screen and fill borders with a matched color</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="metroCheckBoxLauchAtStartup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="metroCheckBoxSetBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 15</value>
+  </data>
+  <data name="&gt;&gt;metroTabPagePhoto.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxAutoUpdatePhoto.Parent" xml:space="preserve">
+    <value>metroTabPageGeneral</value>
+  </data>
+  <data name="metroTabPageGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>420, 220</value>
+  </data>
+  <data name="metroCheckBoxAutoUpdatePhoto.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormSettings</value>
+  </data>
+  <data name="metroCheckBoxFillBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 22</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxFillBackground.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroTabPagePhoto.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxSetBackground.Name" xml:space="preserve">
+    <value>metroCheckBoxSetBackground</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxLauchAtStartup.Parent" xml:space="preserve">
+    <value>metroTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeBright.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="metroCheckBoxLauchAtStartup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 88</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeDark.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroTabPageGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 106</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeBright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 54</value>
+  </data>
+  <data name="metroCheckBoxSetBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeDark.Name" xml:space="preserve">
+    <value>metroRadioButtonFillColorModeDark</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxAutoUpdatePhoto.Name" xml:space="preserve">
+    <value>metroCheckBoxAutoUpdatePhoto</value>
+  </data>
+  <data name="metroCheckBoxLauchAtStartup.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxAutoUpdatePhoto.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroTabPagePhoto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 35</value>
+  </data>
+  <data name="metroCheckBoxLauchAtStartup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 15</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxLauchAtStartup.Name" xml:space="preserve">
+    <value>metroCheckBoxLauchAtStartup</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeDark.Parent" xml:space="preserve">
+    <value>metroTabPagePhoto</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxSetBackground.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeBright.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;metroTabControlSettings.Name" xml:space="preserve">
+    <value>metroTabControlSettings</value>
+  </data>
+  <data name="metroTabControlSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 59</value>
+  </data>
+  <data name="metroCheckBoxAutoUpdatePhoto.Text" xml:space="preserve">
+    <value>Automatically check for new pictures</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeDark.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeDark.Text" xml:space="preserve">
+    <value>Prefere darker colors</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroCheckBoxAutoUpdatePhoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 15</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeBright.Name" xml:space="preserve">
+    <value>metroRadioButtonFillColorModeBright</value>
+  </data>
+  <data name="&gt;&gt;metroTabPagePhoto.Parent" xml:space="preserve">
+    <value>metroTabControlSettings</value>
+  </data>
+  <data name="&gt;&gt;metroTabControlSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroTabPagePhoto.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxLauchAtStartup.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxSetBackground.Parent" xml:space="preserve">
+    <value>metroTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;metroTabPageGeneral.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabPage, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="metroTabControlSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="metroCheckBoxAutoUpdatePhoto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 18</value>
+  </data>
+  <data name="metroCheckBoxSetBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 55</value>
+  </data>
+  <data name="&gt;&gt;metroTabPageGeneral.Parent" xml:space="preserve">
+    <value>metroTabControlSettings</value>
+  </data>
+  <data name="metroTabControlSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 145</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxSetBackground.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroCheckBoxSetBackground.Text" xml:space="preserve">
+    <value>Automatically set picture as desktop background</value>
+  </data>
+  <data name="metroCheckBoxFillBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeBright.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroCheckBoxFillBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="metroCheckBoxFillBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 15</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeDark.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="metroTabPageGeneral.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeBright.Text" xml:space="preserve">
+    <value>Prefere brighter colors</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxFillBackground.Parent" xml:space="preserve">
+    <value>metroTabPagePhoto</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeDark.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxFillBackground.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroTabPagePhoto.Text" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="metroCheckBoxAutoUpdatePhoto.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroTabControlSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;metroTabPageGeneral.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeBright.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroTabPageGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 35</value>
+  </data>
+  <data name="&gt;&gt;metroRadioButtonFillColorModeBright.Parent" xml:space="preserve">
+    <value>metroTabPagePhoto</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeBright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 15</value>
+  </data>
+  <data name="metroCheckBoxSetBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;metroTabControlSettings.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTabControl, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeDark.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 88</value>
+  </data>
+  <data name="metroTabPagePhoto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 106</value>
+  </data>
+  <data name="&gt;&gt;metroTabPageGeneral.Name" xml:space="preserve">
+    <value>metroTabPageGeneral</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxLauchAtStartup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxFillBackground.Name" xml:space="preserve">
+    <value>metroCheckBoxFillBackground</value>
+  </data>
+  <data name="&gt;&gt;metroCheckBoxAutoUpdatePhoto.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroRadioButtonFillColorModeDark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 15</value>
+  </data>
+  <data name="metroCheckBoxLauchAtStartup.Text" xml:space="preserve">
+    <value>Run on Windows startup</value>
+  </data>
+  <data name="&gt;&gt;metroTabPagePhoto.Name" xml:space="preserve">
+    <value>metroTabPagePhoto</value>
+  </data>
+  <data name="metroTabControlSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -44,15 +44,15 @@
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroToolTips = new MetroFramework.Components.MetroToolTip();
-            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBoxDonate = new System.Windows.Forms.PictureBox();
+            this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
-            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.contextMenuStripMain.SuspendLayout();
-            this.contextMenuStripDonate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).BeginInit();
+            this.contextMenuStripDonate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.SuspendLayout();
@@ -135,14 +135,6 @@
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
-            // contextMenuStripDonate
-            // 
-            resources.ApplyResources(this.contextMenuStripDonate, "contextMenuStripDonate");
-            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemDonatePayPal});
-            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.metroToolTips.SetToolTip(this.contextMenuStripDonate, resources.GetString("contextMenuStripDonate.ToolTip"));
-            // 
             // pictureBoxDonate
             // 
             resources.ApplyResources(this.pictureBoxDonate, "pictureBoxDonate");
@@ -153,6 +145,21 @@
             this.metroToolTips.SetToolTip(this.pictureBoxDonate, resources.GetString("pictureBoxDonate.ToolTip"));
             this.pictureBoxDonate.EnabledChanged += new System.EventHandler(this.pictureBoxDonate_EnabledChanged);
             this.pictureBoxDonate.Click += new System.EventHandler(this.pictureBoxDonate_Click);
+            // 
+            // contextMenuStripDonate
+            // 
+            resources.ApplyResources(this.contextMenuStripDonate, "contextMenuStripDonate");
+            this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemDonatePayPal});
+            this.contextMenuStripDonate.Name = "contextMenuStripDonate";
+            this.metroToolTips.SetToolTip(this.contextMenuStripDonate, resources.GetString("contextMenuStripDonate.ToolTip"));
+            // 
+            // toolStripMenuItemDonatePayPal
+            // 
+            resources.ApplyResources(this.toolStripMenuItemDonatePayPal, "toolStripMenuItemDonatePayPal");
+            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
+            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
+            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
             // 
             // pictureBoxSettings
             // 
@@ -177,13 +184,6 @@
             this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
             // 
-            // toolStripMenuItemDonatePayPal
-            // 
-            resources.ApplyResources(this.toolStripMenuItemDonatePayPal, "toolStripMenuItemDonatePayPal");
-            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
-            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
-            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -198,8 +198,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.contextMenuStripMain.ResumeLayout(false);
-            this.contextMenuStripDonate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).EndInit();
+            this.contextMenuStripDonate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.ResumeLayout(false);

@@ -71,7 +71,7 @@ namespace GoodMood.Utility
             }
             catch(Exception ex)
             {
-                throw new Exception("Cannot move new downloaded photo to 'wallpaper.bmp' file", ex);
+                throw new Exception(Strings.WallpaperCopyError, ex);
             }
 
             SystemParametersInfo(SPI_SETDESKWALLPAPER,
