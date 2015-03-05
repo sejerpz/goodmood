@@ -104,7 +104,7 @@ namespace GoodMood.Photo
 
         public void Start()
         {
-            timer = new System.Threading.Timer(this.CheckUpdate, this, 0, Timeout.Infinite);
+            timer = new System.Threading.Timer(this.CheckUpdate, this, 5 * 1000, Timeout.Infinite);
             isRunning = true;
         }
 
