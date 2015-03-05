@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAbout));
             this.metroLabelVersion = new MetroFramework.Controls.MetroLabel();
             this.metroLabelCopyRight = new MetroFramework.Controls.MetroLabel();
             this.metroLinkWebSite = new MetroFramework.Controls.MetroLink();
@@ -40,30 +41,19 @@
             // 
             // metroLabelVersion
             // 
-            this.metroLabelVersion.AutoSize = true;
-            this.metroLabelVersion.Location = new System.Drawing.Point(25, 66);
+            resources.ApplyResources(this.metroLabelVersion, "metroLabelVersion");
             this.metroLabelVersion.Name = "metroLabelVersion";
-            this.metroLabelVersion.Size = new System.Drawing.Size(119, 19);
-            this.metroLabelVersion.TabIndex = 0;
-            this.metroLabelVersion.Text = "metroLabelVersion";
             // 
             // metroLabelCopyRight
             // 
-            this.metroLabelCopyRight.AutoSize = true;
-            this.metroLabelCopyRight.Location = new System.Drawing.Point(25, 99);
+            resources.ApplyResources(this.metroLabelCopyRight, "metroLabelCopyRight");
             this.metroLabelCopyRight.Name = "metroLabelCopyRight";
-            this.metroLabelCopyRight.Size = new System.Drawing.Size(137, 19);
-            this.metroLabelCopyRight.TabIndex = 1;
-            this.metroLabelCopyRight.Text = "metroLabelCopyRight";
             // 
             // metroLinkWebSite
             // 
+            resources.ApplyResources(this.metroLinkWebSite, "metroLinkWebSite");
             this.metroLinkWebSite.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroLinkWebSite.Location = new System.Drawing.Point(98, 137);
             this.metroLinkWebSite.Name = "metroLinkWebSite";
-            this.metroLinkWebSite.Size = new System.Drawing.Size(146, 23);
-            this.metroLinkWebSite.TabIndex = 2;
-            this.metroLinkWebSite.Text = "metroLinkWebSite";
             this.metroLinkWebSite.Click += new System.EventHandler(this.metroLinkWebSite_Click);
             // 
             // metroStyleManager
@@ -72,19 +62,15 @@
             // 
             // metroLinkCheckUpdates
             // 
+            resources.ApplyResources(this.metroLinkCheckUpdates, "metroLinkCheckUpdates");
             this.metroLinkCheckUpdates.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.metroLinkCheckUpdates.Location = new System.Drawing.Point(175, 65);
             this.metroLinkCheckUpdates.Name = "metroLinkCheckUpdates";
-            this.metroLinkCheckUpdates.Size = new System.Drawing.Size(151, 23);
-            this.metroLinkCheckUpdates.TabIndex = 3;
-            this.metroLinkCheckUpdates.Text = "check for updates...";
             this.metroLinkCheckUpdates.Click += new System.EventHandler(this.metroLinkCheckUpdates_Click);
             // 
             // FormAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 179);
             this.Controls.Add(this.metroLinkCheckUpdates);
             this.Controls.Add(this.metroLinkWebSite);
             this.Controls.Add(this.metroLabelCopyRight);
@@ -96,7 +82,6 @@
             this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.SystemShadow;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "GoodMood";
             this.Click += new System.EventHandler(this.FormAbout_Click);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);

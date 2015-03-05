@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GoodMood.Utility
@@ -63,9 +64,10 @@ namespace GoodMood.Utility
                 }
             }
 
+            
             try
             {
-                File.Copy(tempWallPaperPath, newWallPaperPath, true);
+                FileCopy(tempWallPaperPath, newWallPaperPath);
             }
             catch(Exception ex)
             {
@@ -76,6 +78,30 @@ namespace GoodMood.Utility
                 0,
                 newWallPaperPath,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+        }
+
+        private static void FileCopy(string sourceFilename, string destFilename, bool overwrite = true, int retries = 10, int delayms = 500)
+        {
+            while (true)
+            {
+                try
+                {
+                    File.Copy(sourceFilename, destFilename, overwrite);
+                    break;
+                }
+                catch (IOException ex)
+                {
+                    if (retries <= 0)
+                    {
+                        throw ex;
+                    }
+                    else
+                    {
+                        Thread.Sleep(500); // 500ms
+                        retries--;
+                    }
+                }
+            }
         }
     }
 }

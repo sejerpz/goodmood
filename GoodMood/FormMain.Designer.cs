@@ -44,28 +44,24 @@
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroToolTips = new MetroFramework.Components.MetroToolTip();
-            this.pictureBoxDonate = new System.Windows.Forms.PictureBox();
             this.contextMenuStripDonate = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxDonate = new System.Windows.Forms.PictureBox();
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.pictureBoxPreview = new System.Windows.Forms.PictureBox();
+            this.toolStripMenuItemDonatePayPal = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.contextMenuStripMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).BeginInit();
             this.contextMenuStripDonate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabelTitle
             // 
-            this.metroLabelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroLabelTitle.Location = new System.Drawing.Point(23, 431);
+            resources.ApplyResources(this.metroLabelTitle, "metroLabelTitle");
             this.metroLabelTitle.Name = "metroLabelTitle";
-            this.metroLabelTitle.Size = new System.Drawing.Size(454, 23);
-            this.metroLabelTitle.TabIndex = 1;
-            this.metroLabelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroToolTips.SetToolTip(this.metroLabelTitle, resources.GetString("metroLabelTitle.ToolTip"));
             // 
             // metroStyleManager
             // 
@@ -73,17 +69,14 @@
             // 
             // metroProgressSpinnerLoader
             // 
-            this.metroProgressSpinnerLoader.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroProgressSpinnerLoader.Location = new System.Drawing.Point(224, 218);
+            resources.ApplyResources(this.metroProgressSpinnerLoader, "metroProgressSpinnerLoader");
             this.metroProgressSpinnerLoader.Maximum = 100;
-            this.metroProgressSpinnerLoader.MaximumSize = new System.Drawing.Size(96, 96);
-            this.metroProgressSpinnerLoader.MinimumSize = new System.Drawing.Size(48, 48);
             this.metroProgressSpinnerLoader.Name = "metroProgressSpinnerLoader";
-            this.metroProgressSpinnerLoader.Size = new System.Drawing.Size(48, 48);
-            this.metroProgressSpinnerLoader.TabIndex = 0;
+            this.metroToolTips.SetToolTip(this.metroProgressSpinnerLoader, resources.GetString("metroProgressSpinnerLoader.ToolTip"));
             // 
             // contextMenuStripMain
             // 
+            resources.ApplyResources(this.contextMenuStripMain, "contextMenuStripMain");
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemRefresh,
             this.toolStripMenuItemSetWallpaper,
@@ -93,140 +86,120 @@
             this.toolStripMenuItemAbout,
             this.toolStripMenuItemExit});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(217, 148);
+            this.metroToolTips.SetToolTip(this.contextMenuStripMain, resources.GetString("contextMenuStripMain.ToolTip"));
             // 
             // toolStripMenuItemRefresh
             // 
+            resources.ApplyResources(this.toolStripMenuItemRefresh, "toolStripMenuItemRefresh");
             this.toolStripMenuItemRefresh.Name = "toolStripMenuItemRefresh";
-            this.toolStripMenuItemRefresh.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemRefresh.Text = "Refresh";
             this.toolStripMenuItemRefresh.Click += new System.EventHandler(this.toolStripMenuItemRefresh_Click);
             // 
             // toolStripMenuItemSetWallpaper
             // 
+            resources.ApplyResources(this.toolStripMenuItemSetWallpaper, "toolStripMenuItemSetWallpaper");
             this.toolStripMenuItemSetWallpaper.Name = "toolStripMenuItemSetWallpaper";
-            this.toolStripMenuItemSetWallpaper.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemSetWallpaper.Text = "Set as desktop background";
             this.toolStripMenuItemSetWallpaper.Click += new System.EventHandler(this.toolStripMenuItemSetWallpaper_Click);
             // 
             // toolStripMenuItem1
             // 
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(213, 6);
             // 
             // toolStripMenuItemSettings
             // 
+            resources.ApplyResources(this.toolStripMenuItemSettings, "toolStripMenuItemSettings");
             this.toolStripMenuItemSettings.Name = "toolStripMenuItemSettings";
-            this.toolStripMenuItemSettings.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemSettings.Text = "Settings...";
             this.toolStripMenuItemSettings.Click += new System.EventHandler(this.toolStripMenuItemSettings_Click);
             // 
             // toolStripMenuItem2
             // 
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(213, 6);
             // 
             // toolStripMenuItemAbout
             // 
+            resources.ApplyResources(this.toolStripMenuItemAbout, "toolStripMenuItemAbout");
             this.toolStripMenuItemAbout.Name = "toolStripMenuItemAbout";
-            this.toolStripMenuItemAbout.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemAbout.Text = "About...";
             this.toolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripMenuItemAbout_Click);
             // 
             // toolStripMenuItemExit
             // 
+            resources.ApplyResources(this.toolStripMenuItemExit, "toolStripMenuItemExit");
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(216, 22);
-            this.toolStripMenuItemExit.Text = "Exit";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
             // notifyIcon
             // 
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
             this.notifyIcon.ContextMenuStrip = this.contextMenuStripMain;
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Visible = true;
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
-            // pictureBoxDonate
-            // 
-            this.pictureBoxDonate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDonate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxDonate.Image = global::GoodMood.Properties.Resources.Donate14;
-            this.pictureBoxDonate.Location = new System.Drawing.Point(392, 8);
-            this.pictureBoxDonate.Name = "pictureBoxDonate";
-            this.pictureBoxDonate.Size = new System.Drawing.Size(14, 14);
-            this.pictureBoxDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxDonate.TabIndex = 8;
-            this.pictureBoxDonate.TabStop = false;
-            this.metroToolTips.SetToolTip(this.pictureBoxDonate, "Support this App, please make a donation!");
-            this.pictureBoxDonate.EnabledChanged += new System.EventHandler(this.pictureBoxDonate_EnabledChanged);
-            this.pictureBoxDonate.Click += new System.EventHandler(this.pictureBoxDonate_Click);
-            // 
             // contextMenuStripDonate
             // 
+            resources.ApplyResources(this.contextMenuStripDonate, "contextMenuStripDonate");
             this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemDonatePayPal});
             this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.contextMenuStripDonate.Size = new System.Drawing.Size(186, 26);
+            this.metroToolTips.SetToolTip(this.contextMenuStripDonate, resources.GetString("contextMenuStripDonate.ToolTip"));
             // 
-            // toolStripMenuItemDonatePayPal
+            // pictureBoxDonate
             // 
-            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
-            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
-            this.toolStripMenuItemDonatePayPal.Size = new System.Drawing.Size(185, 22);
-            this.toolStripMenuItemDonatePayPal.Text = "Donate with PayPal...";
-            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
+            resources.ApplyResources(this.pictureBoxDonate, "pictureBoxDonate");
+            this.pictureBoxDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxDonate.Image = global::GoodMood.Properties.Resources.Donate14;
+            this.pictureBoxDonate.Name = "pictureBoxDonate";
+            this.pictureBoxDonate.TabStop = false;
+            this.metroToolTips.SetToolTip(this.pictureBoxDonate, resources.GetString("pictureBoxDonate.ToolTip"));
+            this.pictureBoxDonate.EnabledChanged += new System.EventHandler(this.pictureBoxDonate_EnabledChanged);
+            this.pictureBoxDonate.Click += new System.EventHandler(this.pictureBoxDonate_Click);
             // 
             // pictureBoxSettings
             // 
-            this.pictureBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBoxSettings, "pictureBoxSettings");
             this.pictureBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBoxSettings.Image = global::GoodMood.Properties.Resources.Edit14;
-            this.pictureBoxSettings.Location = new System.Drawing.Point(368, 8);
             this.pictureBoxSettings.Name = "pictureBoxSettings";
-            this.pictureBoxSettings.Size = new System.Drawing.Size(14, 14);
-            this.pictureBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxSettings.TabIndex = 7;
             this.pictureBoxSettings.TabStop = false;
+            this.metroToolTips.SetToolTip(this.pictureBoxSettings, resources.GetString("pictureBoxSettings.ToolTip"));
             this.pictureBoxSettings.EnabledChanged += new System.EventHandler(this.pictureBoxSettings_EnabledChanged);
             this.pictureBoxSettings.Click += new System.EventHandler(this.pictureBoxSettings_Click);
             // 
             // pictureBoxPreview
             // 
-            this.pictureBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.pictureBoxPreview, "pictureBoxPreview");
             this.pictureBoxPreview.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pictureBoxPreview.Location = new System.Drawing.Point(23, 65);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(454, 365);
-            this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxPreview.TabIndex = 0;
             this.pictureBoxPreview.TabStop = false;
+            this.metroToolTips.SetToolTip(this.pictureBoxPreview, resources.GetString("pictureBoxPreview.ToolTip"));
             this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
             // 
+            // toolStripMenuItemDonatePayPal
+            // 
+            resources.ApplyResources(this.toolStripMenuItemDonatePayPal, "toolStripMenuItemDonatePayPal");
+            this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
+            this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
+            this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 480);
             this.Controls.Add(this.pictureBoxDonate);
             this.Controls.Add(this.metroProgressSpinnerLoader);
             this.Controls.Add(this.pictureBoxSettings);
             this.Controls.Add(this.metroLabelTitle);
             this.Controls.Add(this.pictureBoxPreview);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
-            this.Text = "Good Mood";
+            this.metroToolTips.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.contextMenuStripMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).EndInit();
             this.contextMenuStripDonate.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.ResumeLayout(false);

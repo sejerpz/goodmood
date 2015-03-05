@@ -168,8 +168,14 @@
     <Compile Include="Utility\Windows.cs" />
     <Compile Include="UI\WaitCursor.cs" />
     <Compile Include="Utility\Wallpaper.cs" />
+    <EmbeddedResource Include="FormAbout.it.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.it.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormError.resx">
       <DependentUpon>FormError.cs</DependentUpon>
