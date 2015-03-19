@@ -26,7 +26,7 @@ namespace GoodMood.UI
                 this.Invoke(new Action(() => {
                     if (counter == 0)
                     {
-                        this.Dispose();
+                        this.Hide();
                     }
                     else
                     {
@@ -51,7 +51,6 @@ namespace GoodMood.UI
         {
             timer.Change(1000, Timeout.Infinite);
         }
-
         
         public void StayVisible()
         {

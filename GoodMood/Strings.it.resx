@@ -151,7 +151,7 @@
     <comment>The 0 argument is the version string</comment>
   </data>
   <data name="NoUpdate" xml:space="preserve">
-    <value>Nessuna update disponibile.</value>
+    <value>Nessun aggiornamento disponibile.</value>
   </data>
   <data name="NoUpdateMessage" xml:space="preserve">
     <value>Stai eseguento l'ultima versione :)</value>

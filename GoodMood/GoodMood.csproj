@@ -69,7 +69,7 @@
     <ManifestKeyFile>GoodMood_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -130,6 +130,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dispatcher.cs" />
     <Compile Include="UI\FormError.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Resources\Refresh90.png" />
     <None Include="Resources\NoInternet225.png" />
     <None Include="Resources\Oops96.png" />
     <None Include="Resources\Paypal16.png" />

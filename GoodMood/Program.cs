@@ -14,6 +14,8 @@ namespace GoodMood
 {
     static class Program
     {
+        public static Dispatcher Displatcher;
+
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
         /// </summary>
@@ -24,10 +26,26 @@ namespace GoodMood
             var options = new OptionSet()
                 .Add("quiet", quiet => { startupOptions.Quiet = true; });
             options.Parse(args);
+           
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Application_ThreadException;
-            Application.Run(new FormMain(startupOptions));
+
+            var mainForm = new FormMain(startupOptions);
+
+            Displatcher = new UI.Dispatcher();
+            
+            if (startupOptions.Quiet)
+            {
+                mainForm.HideToTrayArea();
+            }
+            else
+            {
+                mainForm.Show();
+            }
+
+            Application.Run();
         }
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

@@ -26,16 +26,36 @@ namespace GoodMood
     public partial class FormMain : MetroForm
     {
         private PhotoManager pictureManager;
-        private bool closeByMenu = false;
         private CommandlineOptions startupOptions;
         private FormTrayTooltip customTooltip = null;
         private System.Windows.Forms.Timer toolTipTimer;
         private Rectangle trayIconSinsitiveArea = Rectangle.Empty;
 
+        private class UpdateProgressStatus
+        {
+            public bool IsUpdating { get; set; }
+            public Exception Exception { get; set; }
+        }
+
+        private List<Action> replayActions;
+
         private FormMain()
         {
             InitializeComponent();
-            
+            this.HandleCreated += FormMain_HandleCreated;
+            this.customTooltip = new FormTrayTooltip();
+            this.customTooltip.Hide();
+        }
+
+        void FormMain_HandleCreated(object sender, EventArgs e)
+        {
+            if (this.replayActions != null)
+            {
+                foreach (var action in this.replayActions)
+                    this.Invoke(action);
+
+                this.replayActions = null;
+            }
         }
 
         public FormMain(CommandlineOptions startupOptions)
@@ -68,23 +88,9 @@ namespace GoodMood
                 metroLabelTitle.Text = Strings.SelectRefreshInfo;
             }
 
-            Application.Idle += Application_Idle;
-
             this.toolTipTimer = new System.Windows.Forms.Timer(this.components);
             this.toolTipTimer.Interval = 1250;
             this.toolTipTimer.Tick += toolTipTimer_Tick;
-        }
-
-        void Application_Idle(object sender, EventArgs e)
-        {
-            Application.Idle -= Application_Idle;
-            ProcessCommandlineOptions();
-        }
-
-        private void ProcessCommandlineOptions()
-        {
-            if (startupOptions.Quiet)
-                this.HideToTrayArea();
         }
 
         private async void UpdatePicture()
@@ -109,11 +115,6 @@ namespace GoodMood
                 pictureBoxPreview.Cursor = Cursors.Hand;
                 this.toolStripMenuItemSetWallpaper.Enabled = true;
                 metroLabelTitle.Text = pictureManager.Uri.PhotoDescription ?? "";
-
-                if (customTooltip != null && !customTooltip.IsDisposed)
-                {
-                    customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
-                }
 
                 if (pictureManager.Image != null)
                 {
@@ -228,51 +229,96 @@ namespace GoodMood
 
         private void pictureManager_PictureUpdateBegin(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
+            var action = new Action(() =>
+                {
+                    OnPictureUpdateBegin((PhotoManager)sender);
+                });
+
+            if (this.IsHandleCreated)
             {
-                OnPictureUpdateBegin((PhotoManager)sender);
-            }));
+                this.Invoke(action);
+            }
+            else
+            {
+                this.replayActions = new List<Action>();
+                this.replayActions.Add(action);
+            }
         }
 
         private void pictureManager_PictureUpdateEnd(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() => 
-            { 
-                OnPictureUpdateEnd((PhotoManager)sender); 
-            }));
+            var action = new Action(() =>
+                {
+                    OnPictureUpdateEnd((PhotoManager)sender);
+                });
+
+            if (this.IsHandleCreated)
+            {
+                this.Invoke(action);
+            }
+            else
+            {
+                this.replayActions.Add(action);
+            }
         }
 
         private void pictureManager_PictureUpdateSuccess(object sender, EventArgs e)
         {
-            this.Invoke(new Action(() =>
+            var action = new Action(() =>
+                {
+                    OnPictureUpdateSuccess((PhotoManager)sender);
+                });
+
+            
+            ShowCustomTooltip();
+
+            if (this.IsHandleCreated)
             {
-                OnPictureUpdateSuccess((PhotoManager)sender);
-            }));
+                this.Invoke(action);
+            }
+            else
+            {
+                this.replayActions.Add(action);
+            }
         }
 
         private void pictureManager_PictureUpdateError(object sender, ThreadExceptionEventArgs e)
         {
-            this.Invoke(new Action(() =>
-            {
-                var wex = e.Exception as WebException;
+            var action = new Action(() =>
+                {
+                    OnPictureUpdateException(e.Exception);
+                });
 
-                if (wex != null
-                    && (wex.Status == WebExceptionStatus.NameResolutionFailure
-                    || wex.Status == WebExceptionStatus.Timeout
-                    || wex.Status == WebExceptionStatus.ConnectFailure
-                    || wex.Status == WebExceptionStatus.ProtocolError))
-                {
-                    this.pictureBoxPreview.Image = Resources.NoInternet225;
-                    this.pictureBoxPreview.Cursor = Cursors.Default;
-                    this.metroToolTips.SetToolTip(pictureBoxPreview, "");
-                    this.metroLabelTitle.Text = Strings.CheckYourInternetConnection;
-                    this.toolStripMenuItemSetWallpaper.Enabled = false;
-                }
-                else
-                {
-                    Interaction.Error(e.Exception);
-                }
-            }));
+            if (this.IsHandleCreated)
+            {
+                this.Invoke(action);
+            }
+            else
+            {
+                this.replayActions.Add(action);
+            }
+        }
+
+        private void OnPictureUpdateException(Exception exception)
+        {
+            var wex = exception as WebException;
+
+            if (wex != null
+                && (wex.Status == WebExceptionStatus.NameResolutionFailure
+                || wex.Status == WebExceptionStatus.Timeout
+                || wex.Status == WebExceptionStatus.ConnectFailure
+                || wex.Status == WebExceptionStatus.ProtocolError))
+            {
+                this.pictureBoxPreview.Image = Resources.NoInternet225;
+                this.pictureBoxPreview.Cursor = Cursors.Default;
+                this.metroToolTips.SetToolTip(pictureBoxPreview, "");
+                this.metroLabelTitle.Text = Strings.CheckYourInternetConnection;
+                this.toolStripMenuItemSetWallpaper.Enabled = false;
+            }
+            else
+            {
+                Interaction.Error(exception);
+            }
         }
 
         private void toolStripMenuItemRefresh_Click(object sender, EventArgs e)
@@ -308,30 +354,36 @@ namespace GoodMood
             if (this.pictureManager.IsRunning)
                 this.pictureManager.Stop();
 
-            closeByMenu = true;
-            this.Close();
+            Application.Exit();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                this.Visible = !this.Visible;
+                if (this.Visible)
+                    this.Hide();
+                else
+                {
+                    this.Show();
+                }
             }
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing && !closeByMenu)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
                 HideToTrayArea();
             }
         }
 
-        private void HideToTrayArea()
+        public void HideToTrayArea()
         {
-            this.Visible = false;
+            if (this.Visible)
+                this.Hide();
+
             notifyIcon.ShowBalloonTip(1000, this.Text, Strings.TrayHideInfo, ToolTipIcon.Info);
         }
 
@@ -393,12 +445,12 @@ namespace GoodMood
 
         private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
         {
-            ShowCustomTooltip(e);
+            UpdateCustomTooltipStatus(e);
         }
 
-        private void ShowCustomTooltip(MouseEventArgs e)
+        private void UpdateCustomTooltipStatus(MouseEventArgs e)
         {
-            if (customTooltip == null || customTooltip.IsDisposed)
+            if (!customTooltip.Visible)
             {
                 if (!this.toolTipTimer.Enabled)
                 {
@@ -414,18 +466,33 @@ namespace GoodMood
             }
         }
 
+        private void ShowCustomTooltip()
+        {
+            Program.Displatcher.Invoke(new Action(() =>
+            {
+                customTooltip.Show();
+                var screen = Screen.PrimaryScreen;
+                customTooltip.Location = new Point(screen.WorkingArea.Width - customTooltip.Width - 2, screen.WorkingArea.Height - customTooltip.Height - 2);
+                if (pictureManager.IsUpdating)
+                {
+                    customTooltip.UpdateInfo(Properties.Resources.Refresh90, string.Format(Strings.UpdateInProgressInfo, pictureManager.Uri.ProviderDescription));
+                }
+                else
+                {
+                    customTooltip.UpdateInfo(pictureManager.Image, pictureManager.Uri.PhotoDescription);
+                }
+                customTooltip.Show();
+                customTooltip.StayVisible();
+            }));
+        }
+
         private void toolTipTimer_Tick(object sender, EventArgs e)
         {
             toolTipTimer.Stop();
             var mouse = Control.MousePosition;
             if (trayIconSinsitiveArea.Contains(mouse))
             {
-                customTooltip = new FormTrayTooltip();
-                var screen = Screen.PrimaryScreen;
-                customTooltip.Location = new Point(screen.WorkingArea.Width - customTooltip.Width - 2, screen.WorkingArea.Height - customTooltip.Height - 2);
-                customTooltip.UpdateInfo(pictureBoxPreview.Image, metroLabelTitle.Text);
-                customTooltip.Show();
-                customTooltip.StayVisible();
+                ShowCustomTooltip();
             }
         }
 

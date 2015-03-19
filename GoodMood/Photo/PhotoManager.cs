@@ -21,6 +21,7 @@ namespace GoodMood.Photo
         private string lastDowloadedUri = null;
         private System.Threading.Timer timer;
         private bool isRunning = false;
+        private bool isUpdating = false;
 
         public event EventHandler PictureUpdateBegin;
         public event EventHandler PictureUpdateEnd;
@@ -59,6 +60,14 @@ namespace GoodMood.Photo
             }
         }
 
+        public bool IsUpdating
+        {
+            get
+            {
+                return isUpdating;
+            }
+        }
+
         public PhotoManager(PhotoUri pictureUri)
         {
             this.pictureUri = pictureUri;
@@ -80,12 +89,14 @@ namespace GoodMood.Photo
 
         protected virtual void OnPictureUpdateBegin(EventArgs e)
         {
+            isUpdating = true;
             if (PictureUpdateBegin != null)
                 PictureUpdateBegin(this, e);
         }
 
         protected virtual void OnPictureUpdateEnd(EventArgs e)
         {
+            isUpdating = false;
  	        if (PictureUpdateEnd != null)
                 PictureUpdateEnd(this, e);
         }
