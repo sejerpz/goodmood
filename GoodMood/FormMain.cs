@@ -52,7 +52,7 @@ namespace GoodMood
                 Interaction.Error(ex);
             }
 
-            this.pictureManager = new PhotoManager(new NationalGeographicPhotoUri());
+            this.pictureManager = new PhotoManager(new NasaPhotoUri());
             this.pictureManager.PictureUpdateBegin += pictureManager_PictureUpdateBegin;
             this.pictureManager.PictureUpdateSuccess += pictureManager_PictureUpdateSuccess;
             this.pictureManager.PictureUpdateEnd += pictureManager_PictureUpdateEnd;
