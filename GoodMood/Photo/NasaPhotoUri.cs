@@ -24,9 +24,11 @@ namespace GoodMood.Photo
             try
             {
                 var siteUri = new Uri(webUri);
-                var client = new WebClient();
-                client.Headers["Accept-Charset"] = "utf-8";
+                var client = new WebClientEnhanced();
                 client.Encoding = Encoding.UTF8;
+
+                //disable gzip
+                //client.Headers["Accept-Encoding"] = "identity";
 
                 string dataFeed = await client.DownloadStringTaskAsync(siteUri);                
 
@@ -44,6 +46,21 @@ namespace GoodMood.Photo
             catch
             {
                 throw;
+            }
+        }
+
+        private class WebClientEnhanced : WebClient
+        {
+            public WebClientEnhanced()
+                : base()
+            {
+            }
+
+            protected override WebRequest GetWebRequest(Uri address)
+            {
+                HttpWebRequest request = base.GetWebRequest(address) as HttpWebRequest;
+                request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                return request;
             }
         }
     }
