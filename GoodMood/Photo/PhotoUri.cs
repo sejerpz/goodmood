@@ -12,8 +12,9 @@ namespace GoodMood.Photo
 {
     abstract class PhotoUri
     {
+        private string webSiteAddress = null;
         private string photoAddress = null;
-        private string photoDescription = null;
+        private string photoDescription = null;        
 
         public PhotoUri()
         {
@@ -35,7 +36,11 @@ namespace GoodMood.Photo
         {
             get
             {
-                return this.PhotoAddress;
+                return this.webSiteAddress ?? this.photoDescription;
+            }
+            protected set
+            {
+                this.webSiteAddress = value;
             }
         }
 
