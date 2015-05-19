@@ -23,6 +23,8 @@ namespace GoodMood.Photo
         private bool isRunning = false;
         private bool isUpdating = false;
 
+        private DateTime? lastUpdateDate = null;
+
         public event EventHandler PictureUpdateBegin;
         public event EventHandler PictureUpdateEnd;
         public event EventHandler<ThreadExceptionEventArgs> PictureUpdateError;
@@ -75,14 +77,17 @@ namespace GoodMood.Photo
 
         private async void CheckUpdate(object state)
         {
-            int nextCheckInterval = 1 * 60 * 60 * 1000;  // recheck in 1 hour
-            var updated = await Update();
+            int nextCheckInterval = (int)(0.5 * 3600 * 1000);  // recheck in half hour
 
-            if (updated)
+            if (!isUpdating)
             {
-                var now = DateTime.Now;
-                var nextTick = now.Date.AddDays(1).Date.Subtract(now);
-                nextCheckInterval = 10000 + (int)(nextTick.TotalSeconds) * 1000; // 10 sec. after midnight
+                if (!lastUpdateDate.HasValue || DateTime.Now.Date > lastUpdateDate.GetValueOrDefault().Date)
+                {
+                    if (await CheckAndDowloadImage())
+                    {
+                        lastUpdateDate = DateTime.Now;
+                    }
+                }
             }
             timer.Change(nextCheckInterval, Timeout.Infinite);
         }
@@ -115,6 +120,8 @@ namespace GoodMood.Photo
 
         public void Start()
         {
+            lastUpdateDate = null;
+            lastDowloadedUri = null;
             timer = new System.Threading.Timer(this.CheckUpdate, this, 5 * 1000, Timeout.Infinite);
             isRunning = true;
         }
@@ -133,7 +140,12 @@ namespace GoodMood.Photo
         public async Task<bool> Update()
         {
             lastDowloadedUri = null; // invalidate cached uri
-            return await CheckAndDowloadImage();
+            var updated = await CheckAndDowloadImage();
+            if (updated)
+            {
+                lastUpdateDate = DateTime.Now;
+            }
+            return updated;
         }
 
         private async Task<bool> CheckAndDowloadImage()
@@ -154,7 +166,7 @@ namespace GoodMood.Photo
                     newImage = null;
                 }
 
-                updated = newImage != this.Image;
+                updated = !object.ReferenceEquals(newImage, this.Image);
                 this.Image = newImage;
                 OnPictureUpdateSuccess(EventArgs.Empty);
                 return updated;
