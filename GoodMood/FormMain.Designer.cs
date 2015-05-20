@@ -61,7 +61,6 @@
             // 
             resources.ApplyResources(this.metroLabelTitle, "metroLabelTitle");
             this.metroLabelTitle.Name = "metroLabelTitle";
-            this.metroToolTips.SetToolTip(this.metroLabelTitle, resources.GetString("metroLabelTitle.ToolTip"));
             // 
             // metroStyleManager
             // 
@@ -72,11 +71,9 @@
             resources.ApplyResources(this.metroProgressSpinnerLoader, "metroProgressSpinnerLoader");
             this.metroProgressSpinnerLoader.Maximum = 100;
             this.metroProgressSpinnerLoader.Name = "metroProgressSpinnerLoader";
-            this.metroToolTips.SetToolTip(this.metroProgressSpinnerLoader, resources.GetString("metroProgressSpinnerLoader.ToolTip"));
             // 
             // contextMenuStripMain
             // 
-            resources.ApplyResources(this.contextMenuStripMain, "contextMenuStripMain");
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemRefresh,
             this.toolStripMenuItemSetWallpaper,
@@ -86,52 +83,52 @@
             this.toolStripMenuItemAbout,
             this.toolStripMenuItemExit});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.metroToolTips.SetToolTip(this.contextMenuStripMain, resources.GetString("contextMenuStripMain.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripMain, "contextMenuStripMain");
             // 
             // toolStripMenuItemRefresh
             // 
-            resources.ApplyResources(this.toolStripMenuItemRefresh, "toolStripMenuItemRefresh");
             this.toolStripMenuItemRefresh.Name = "toolStripMenuItemRefresh";
+            resources.ApplyResources(this.toolStripMenuItemRefresh, "toolStripMenuItemRefresh");
             this.toolStripMenuItemRefresh.Click += new System.EventHandler(this.toolStripMenuItemRefresh_Click);
             // 
             // toolStripMenuItemSetWallpaper
             // 
-            resources.ApplyResources(this.toolStripMenuItemSetWallpaper, "toolStripMenuItemSetWallpaper");
             this.toolStripMenuItemSetWallpaper.Name = "toolStripMenuItemSetWallpaper";
+            resources.ApplyResources(this.toolStripMenuItemSetWallpaper, "toolStripMenuItemSetWallpaper");
             this.toolStripMenuItemSetWallpaper.Click += new System.EventHandler(this.toolStripMenuItemSetWallpaper_Click);
             // 
             // toolStripMenuItem1
             // 
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // toolStripMenuItemSettings
             // 
-            resources.ApplyResources(this.toolStripMenuItemSettings, "toolStripMenuItemSettings");
             this.toolStripMenuItemSettings.Name = "toolStripMenuItemSettings";
+            resources.ApplyResources(this.toolStripMenuItemSettings, "toolStripMenuItemSettings");
             this.toolStripMenuItemSettings.Click += new System.EventHandler(this.toolStripMenuItemSettings_Click);
             // 
             // toolStripMenuItem2
             // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             // 
             // toolStripMenuItemAbout
             // 
-            resources.ApplyResources(this.toolStripMenuItemAbout, "toolStripMenuItemAbout");
             this.toolStripMenuItemAbout.Name = "toolStripMenuItemAbout";
+            resources.ApplyResources(this.toolStripMenuItemAbout, "toolStripMenuItemAbout");
             this.toolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripMenuItemAbout_Click);
             // 
             // toolStripMenuItemExit
             // 
-            resources.ApplyResources(this.toolStripMenuItemExit, "toolStripMenuItemExit");
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
+            resources.ApplyResources(this.toolStripMenuItemExit, "toolStripMenuItemExit");
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
             // notifyIcon
             // 
-            resources.ApplyResources(this.notifyIcon, "notifyIcon");
             this.notifyIcon.ContextMenuStrip = this.contextMenuStripMain;
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
@@ -148,17 +145,16 @@
             // 
             // contextMenuStripDonate
             // 
-            resources.ApplyResources(this.contextMenuStripDonate, "contextMenuStripDonate");
             this.contextMenuStripDonate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemDonatePayPal});
             this.contextMenuStripDonate.Name = "contextMenuStripDonate";
-            this.metroToolTips.SetToolTip(this.contextMenuStripDonate, resources.GetString("contextMenuStripDonate.ToolTip"));
+            resources.ApplyResources(this.contextMenuStripDonate, "contextMenuStripDonate");
             // 
             // toolStripMenuItemDonatePayPal
             // 
-            resources.ApplyResources(this.toolStripMenuItemDonatePayPal, "toolStripMenuItemDonatePayPal");
             this.toolStripMenuItemDonatePayPal.Image = global::GoodMood.Properties.Resources.Paypal16;
             this.toolStripMenuItemDonatePayPal.Name = "toolStripMenuItemDonatePayPal";
+            resources.ApplyResources(this.toolStripMenuItemDonatePayPal, "toolStripMenuItemDonatePayPal");
             this.toolStripMenuItemDonatePayPal.Click += new System.EventHandler(this.toolStripMenuItemDonatePayPal_Click);
             // 
             // pictureBoxSettings
@@ -169,7 +165,6 @@
             this.pictureBoxSettings.Image = global::GoodMood.Properties.Resources.Edit14;
             this.pictureBoxSettings.Name = "pictureBoxSettings";
             this.pictureBoxSettings.TabStop = false;
-            this.metroToolTips.SetToolTip(this.pictureBoxSettings, resources.GetString("pictureBoxSettings.ToolTip"));
             this.pictureBoxSettings.EnabledChanged += new System.EventHandler(this.pictureBoxSettings_EnabledChanged);
             this.pictureBoxSettings.Click += new System.EventHandler(this.pictureBoxSettings_Click);
             // 
@@ -180,7 +175,6 @@
             this.pictureBoxPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBoxPreview.Name = "pictureBoxPreview";
             this.pictureBoxPreview.TabStop = false;
-            this.metroToolTips.SetToolTip(this.pictureBoxPreview, resources.GetString("pictureBoxPreview.ToolTip"));
             this.pictureBoxPreview.Click += new System.EventHandler(this.pictureBoxPreview_Click);
             this.pictureBoxPreview.Resize += new System.EventHandler(this.pictureBoxPreview_Resize);
             // 
@@ -194,7 +188,7 @@
             this.Controls.Add(this.metroLabelTitle);
             this.Controls.Add(this.pictureBoxPreview);
             this.Name = "FormMain";
-            this.metroToolTips.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.DropShadow;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.contextMenuStripMain.ResumeLayout(false);

@@ -89,7 +89,7 @@ namespace GoodMood
             }
 
             this.toolTipTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolTipTimer.Interval = 1250;
+            this.toolTipTimer.Interval = 750;
             this.toolTipTimer.Tick += toolTipTimer_Tick;
         }
 

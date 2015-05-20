@@ -14,8 +14,11 @@ namespace GoodMood.UI
 {
     public partial class FormTrayTooltip : MetroForm
     {
+        private const int CounterSteps = 4;
+        private const int HideTimeout = 500;
+
         private System.Threading.Timer timer;
-        private int counter = 2;
+        private int counter = CounterSteps;
 
         public FormTrayTooltip()
         {
@@ -34,14 +37,14 @@ namespace GoodMood.UI
 
                         if (rec.Contains(this.PointToClient(Control.MousePosition)))
                         {
-                            StayVisible();
+                             ResetVisibilityState();
                         }
                         else
                         {
                             counter--;
-                            this.Opacity = Math.Min(1.0, 0.5 + counter * 0.15);
+                            this.Opacity = Math.Min(1.0, 0.4 + counter * (0.6 / CounterSteps));
                         }
-                        timer.Change(750, Timeout.Infinite);
+                        timer.Change(HideTimeout, Timeout.Infinite);
                     }
                 }));
             }));
@@ -49,12 +52,18 @@ namespace GoodMood.UI
 
         void FormTrayTooltip_HandleCreated(object sender, EventArgs e)
         {
-            timer.Change(1000, Timeout.Infinite);
+            timer.Change(HideTimeout, Timeout.Infinite);
         }
         
         public void StayVisible()
         {
-            counter = 2;
+            ResetVisibilityState();
+            timer.Change(HideTimeout, Timeout.Infinite);
+        }
+
+        private void ResetVisibilityState()
+        {
+            counter = CounterSteps;
             this.Opacity = 1.0;
         }
 
