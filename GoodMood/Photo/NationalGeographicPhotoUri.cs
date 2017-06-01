@@ -47,24 +47,48 @@ namespace GoodMood.Photo
 
                 var doc = new HtmlDocument();
                 doc.LoadHtml(html);
-                var divs = doc.DocumentNode.Descendants("div").Where(d =>
-                        d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("primary_photo")
+
+                var meta = doc.DocumentNode.Descendants("meta").FirstOrDefault(m =>
+                      m.Attributes.Contains("property") 
+                      && m.Attributes.Contains("content") 
+                      && (string.Compare(m.Attributes["property"].Value, "og:image", true) == 0 || string.Compare(m.Attributes["property"].Value, "twitter:image:src", true) == 0)
                 );
-                foreach (var div in divs)
+
+                if (meta != null)
                 {
-                    var img = div.Descendants("img").FirstOrDefault();
-                    if (img != null)
+                    var newUri = new Uri(siteUri, meta.Attributes["content"].Value);
+                    this.PhotoAddress = newUri.AbsoluteUri;
+                }
+               
+                meta = doc.DocumentNode.Descendants("meta").FirstOrDefault(m =>
+                      m.Attributes.Contains("name") && m.Attributes.Contains("content") && string.Compare(m.Attributes["name"].Value, "twitter:description", true) == 0
+                );
+                if (meta != null)
+                {
+                    this.PhotoDescription = meta.Attributes["content"].Value;
+                }
+
+                if (this.PhotoAddress == null)
+                {
+                    var divs = doc.DocumentNode.Descendants("div").Where(d =>
+                            d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("primary_photo")
+                    );
+                    foreach (var div in divs)
                     {
-                        if (img.HasAttributes)
+                        var img = div.Descendants("img").FirstOrDefault();
+                        if (img != null)
                         {
-                            var newUri = new Uri(siteUri, img.Attributes["src"].Value);
-                            this.PhotoAddress = newUri.AbsoluteUri;
-                            if (img.Attributes["alt"] != null)
+                            if (img.HasAttributes)
                             {
-                                this.PhotoDescription = img.Attributes["alt"].Value;
+                                var newUri = new Uri(siteUri, img.Attributes["src"].Value);
+                                this.PhotoAddress = newUri.AbsoluteUri;
+                                if (img.Attributes["alt"] != null)
+                                {
+                                    this.PhotoDescription = img.Attributes["alt"].Value;
+                                }
                             }
+                            break;
                         }
-                        break;
                     }
                 }
             }
