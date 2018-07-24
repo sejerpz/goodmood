@@ -14,7 +14,7 @@ namespace GoodMood
 {
     static class Program
     {
-        public static Dispatcher Displatcher;
+        public static Dispatcher Dispatcher;
 
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -34,7 +34,7 @@ namespace GoodMood
 
             var mainForm = new FormMain(startupOptions);
 
-            Displatcher = new UI.Dispatcher();
+            Dispatcher = new UI.Dispatcher();
             
             if (startupOptions.Quiet)
             {

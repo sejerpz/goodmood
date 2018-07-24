@@ -468,7 +468,7 @@ namespace GoodMood
 
         private void ShowCustomTooltip()
         {
-            Program.Displatcher.Invoke(new Action(() =>
+            Program.Dispatcher.Invoke(new Action(() =>
             {
                 customTooltip.Show();
                 var screen = Screen.PrimaryScreen;
