@@ -34,10 +34,15 @@ namespace GoodMood.Photo
         {
             try
             {
-                var siteUri = new Uri(webUri);
-                var client = new WebClient();
                 string html;
-                byte[] data = await client.DownloadDataTaskAsync(siteUri);
+                byte[] data;
+                var siteUri = new Uri(webUri);
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                using (var client = new WebClient())
+                {
+                    data = await client.DownloadDataTaskAsync(siteUri);
+                }
 
                 using (var storage = new MemoryStream(data))
                 using (var reader = new StreamReader(storage))
@@ -49,8 +54,8 @@ namespace GoodMood.Photo
                 doc.LoadHtml(html);
 
                 var meta = doc.DocumentNode.Descendants("meta").FirstOrDefault(m =>
-                      m.Attributes.Contains("property") 
-                      && m.Attributes.Contains("content") 
+                      m.Attributes.Contains("property")
+                      && m.Attributes.Contains("content")
                       && (string.Compare(m.Attributes["property"].Value, "og:image", true) == 0 || string.Compare(m.Attributes["property"].Value, "twitter:image:src", true) == 0)
                 );
 
@@ -59,7 +64,7 @@ namespace GoodMood.Photo
                     var newUri = new Uri(siteUri, meta.Attributes["content"].Value);
                     this.PhotoAddress = newUri.AbsoluteUri;
                 }
-               
+
                 meta = doc.DocumentNode.Descendants("meta").FirstOrDefault(m =>
                       m.Attributes.Contains("name") && m.Attributes.Contains("content") && string.Compare(m.Attributes["name"].Value, "twitter:description", true) == 0
                 );
